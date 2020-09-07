@@ -1,0 +1,15 @@
+---
+title: "index"
+author: "Julia Sousa"
+date: "9/6/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+[Lab 1:](Lab1.html) Introduction to R
+
+

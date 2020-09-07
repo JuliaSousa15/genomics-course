@@ -1,0 +1,80 @@
+---
+title: "Lab3A"
+author: "Julia Sousa"
+date: "9/7/2020"
+output: html_document
+---
+
+```{r setup, eval=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+
+library(tidyverse)
+
+```
+
+
+```{r}
+
+download.file(url = "https://ndownloader.figshare.com/files/2292169", destfile = "portal_data_joined.csv")
+
+```
+
+
+```{r}
+
+surveys <- read.csv("portal_data_joined.csv")
+
+```
+
+
+```{r}
+head(surveys)
+```
+
+```{r}
+view(surveys)
+```
+
+```{r}
+
+str(surveys)
+
+```
+
+
+
+## Challenge 1
+
+```{r}
+
+# class of object surveys: data frame
+# number of rows: 34786; number of columns: 13
+# number of species: 48
+
+```
+
+
+
+## Challenge 2
+
+```{r}
+
+surveys[200, ]
+
+```
+
+
+# Saving 'n_rows' to improve readability and reduce duplication
+```{r}
+
+n_rows
+
+```
+
+
+
+
+
