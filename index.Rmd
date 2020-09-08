@@ -1,5 +1,5 @@
 ---
-title: "index"
+title: "Index"
 author: "Julia Sousa"
 date: "8/24/2020"
 output: html_document
@@ -9,7 +9,10 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+![These are my dogs, Penny and Sonny!](IMG_3273.png)
 
-Lab 1: [Introduction to R and Reproducible Research](Lab1.html)
+# Labs
 
-Lab 2: [git, GitHub and Reproducible Research](Lab2.html)
+* Lab 1: [Introduction to R and Reproducible Research](Lab1.html)
+
+* Lab 2: [git, GitHub and Reproducible Research](Lab2.html)
