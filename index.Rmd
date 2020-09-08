@@ -1,5 +1,5 @@
 ---
-title: "Index"
+title: "Evolutionary Genomics & Bioinformatics"
 author: "Julia Sousa"
 date: "8/24/2020"
 output: html_document
