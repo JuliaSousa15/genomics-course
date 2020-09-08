@@ -9,7 +9,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-![These are my dogs, Penny and Sonny!](IMG_3273.png)
+![These are my dogs, Penny and Sonny!](IMG_2644.jpg)
 
 # Labs
 
