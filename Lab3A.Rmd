@@ -299,6 +299,3 @@ missing_dates <- surveys[is.na(surveys$date), c("year", "month", "day")]
 head(missing_dates)
 ```
 
-
-
-

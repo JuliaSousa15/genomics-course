@@ -1,0 +1,111 @@
+---
+title: "Lab3B"
+author: "Julia Sousa"
+date: "9/9/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+```{r}
+
+## load the tidyverse packages, include dplyr
+
+library("tidyverse")
+
+```
+
+
+# What are dplyr and tidyr?
+
+
+```{r}
+
+surveys <- read_csv("portal_data_joined.csv")
+
+```
+
+```{r}
+
+## inspect the data
+str(surveys)
+
+```
+
+
+# Preview the data
+
+```{r}
+view(surveys)
+
+```
+
+
+
+# Selecting columns and flitering rows
+
+```{r}
+
+select(surveys, plot_id, species_id, weight)
+
+select(surveys, -record_id, -species_id)
+
+filter(surveys, year == 1995)
+
+```
+
+# Pipes
+
+
+```{r}
+
+surveys2 <- filter(surveys, weight <5)
+surveys_sml <- select (surveys2, species_id, sex, weight)
+
+```
+
+
+```{r}
+
+surveys_sml <- select(filter(surveys, weight <5,), species_id, sex, weight)
+
+```
+
+
+```{r}
+
+surveys %>% 
+  filter(weight < 5) %>% 
+  select(species_id, sex, weight)
+
+```
+
+
+```{r}
+
+surveys_sml <- surveys %>% 
+  filter(weight < 5) %>% 
+  select(species_id, sex, weight)
+surveys_sml
+
+```
+
+
+
+# Challenge 1
+
+```{r}
+
+surveys %>% 
+  filter(year > 1995) %>% 
+  select(year, sex, weight)
+
+```
+
+
+
+
