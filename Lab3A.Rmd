@@ -10,9 +10,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ```{r}
-
 library(tidyverse)
-
 ```
 
 
@@ -45,6 +43,27 @@ str(surveys)
 ```
 
 
+```{r, results = "hide"}
+# Inspecting data.frame Objects
+
+dim(surveys)
+nrow(surveys)
+ncol(surveys)
+
+
+head(surveys)
+tail(surveys)
+
+
+names(surveys)
+rownames(surveys)
+
+
+str(surveys)
+summary(surveys)
+```
+
+
 
 ## Challenge 1
 
@@ -67,13 +86,218 @@ surveys[200, ]
 ```
 
 
-# Saving 'n_rows' to improve readability and reduce duplication
+#Saving 'n_rows' to improve readability and reduce duplication
+
 ```{r}
 
-n_rows
+surveys[nrow(surveys), ]
+
 
 ```
 
+
+```{r}
+n_rows <- 34768
+surveys_last <- surveys[n_rows, ]
+surveys_last
+
+
+```
+
+
+```{r}
+
+surveys_middle <- surveys[ 2, ]
+surveys_middle
+
+```
+
+
+```{r}
+surveys_head <- surveys[-(7:n_rows), ]
+surveys_head
+
+```
+
+
+
+# Factors
+
+```{r}
+
+sex <- factor(c("male", "female", "female", "male"))
+
+levels(sex)
+nlevels(sex)
+
+```
+
+```{r}
+sex # current order
+
+```
+
+
+```{r}
+sex <- factor(sex, levels = c("male", "female"))
+sex # after re-ordering
+```
+
+
+# Converting factors
+
+```{r}
+as.character(sex)
+```
+
+```{r}
+year_fct <- factor(c(1990, 1983, 1977, 1998, 1990))
+as.numeric(year_fct)
+as.numeric(as.character(year_fct))
+as.numeric(levels(year_fct))[year_fct]
+```
+
+# Remaining factors
+
+```{r}
+plot(as.factor(surveys$sex))
+```
+
+
+```{r}
+sex <- factor(surveys$sex)
+head(sex)
+```
+
+```{r}
+levels(sex)
+```
+
+```{r}
+levels(sex)[1] <- "undetermined"
+levels(sex)
+```
+
+```{r}
+head(sex)
+```
+
+
+# Challenge 3
+
+```{r}
+levels(sex)[2:3] <- c("female", "male")
+levels(sex)
+```
+```{r}
+sex <- factor(sex, levels = c("female", "male", "undetermined"))
+plot(sex)
+```
+
+
+# Using stringsAsFactors = FALSE
+
+## Compare the difference between our data read as 'factor' vs 'character'
+
+```{r}
+surveys <- read.csv("portal_data_joined.csv", stringsAsFactors = TRUE)
+str(surveys)
+```
+
+
+```{r}
+surveys <- read.csv("portal_data_joined.csv", stringsAsFactors = FALSE)
+str(surveys)
+```
+
+## Convert the column "plot type" into a factor
+
+```{r}
+surveys$plot_type <- factor(surveys$plot_type)
+plot(surveys$plot_type)
+```
+
+
+# Challenge 4
+
+```{r}
+
+animal_data <- data.frame(
+  animal = c("dog", "cat", "sea_cucumber", "sea_urchin"),
+  feel = c("furry", "fluffy", "squishy", "spiny"),
+  weight = c(45, 8, 1.1, 0.8)
+)
+
+```
+
+
+```{r}
+
+country_climate <- data.frame(
+  country = c("Canada", "Panama", "South Africa", "Australia"),
+  climate = c("cold", "hot", "temperate", "hot/temperate"),
+  temperature = c(10, 30, 18, "15"),
+  northern_hempisphere = c(TRUE, TRUE, TRUE, "FALSE"),
+  has_kangaroo = c(FALSE, FALSE, FALSE, 1)
+)
+
+str(country_climate)
+
+```
+
+
+```{r}
+# adding stringsAsFactors = FALSE would make the data frame have character vectors, not factors
+# to ensure that each column had accurate data type, would have to remove the quotes in temperature and northern_hemisphere and also replace 1 with TRUE in the has_kangaroo column
+```
+
+
+# Formatting Dates
+
+```{r}
+library("lubridate")
+```
+
+```{r}
+my_date <- ymd("2015-01-01")
+str(my_date)
+```
+
+```{r}
+# sep indicates the character to use to separate each component
+
+my_date <- ymd(paste("2015", "1", "1", sep = "-"))
+str(my_date)
+```
+
+```{r, results = "hide"}
+paste(surveys$year, surveys$month,surveys$day, sep = "-")
+
+```
+
+
+```{r, results = "hide"}
+ymd(paste(surveys$year, surveys$month, surveys$day, sep = "-"))
+```
+
+
+```{r}
+surveys$date <- ymd(paste(surveys$year, surveys$month, surveys$day, sep = "-"))
+```
+
+```{r}
+str(surveys)
+```
+
+
+```{r}
+summary(surveys$date)
+```
+
+```{r}
+missing_dates <- surveys[is.na(surveys$date), c("year", "month", "day")]
+head(missing_dates)
+```
 
 
 

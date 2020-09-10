@@ -16,3 +16,8 @@ knitr::opts_chunk$set(echo = TRUE)
 * Lab 1: [Introduction to R and Reproducible Research](Lab1.html)
 
 * Lab 2: [git, GitHub and Reproducible Research](Lab2.html)
+
+* Lab 3A: [Starting with the Data](Lab3A.html)
+
+* Lab 3B: [Manipulating Data]
+
