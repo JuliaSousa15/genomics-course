@@ -285,6 +285,7 @@ ymd(paste(surveys$year, surveys$month, surveys$day, sep = "-"))
 surveys$date <- ymd(paste(surveys$year, surveys$month, surveys$day, sep = "-"))
 ```
 
+
 ```{r}
 str(surveys)
 ```
@@ -298,4 +299,3 @@ summary(surveys$date)
 missing_dates <- surveys[is.na(surveys$date), c("year", "month", "day")]
 head(missing_dates)
 ```
-

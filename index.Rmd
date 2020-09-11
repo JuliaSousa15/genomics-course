@@ -21,4 +21,5 @@ knitr::opts_chunk$set(echo = TRUE)
 
 * Lab 3B: [Manipulating Data](Lab3B.html)
 
-* Lab 4:
+
+
