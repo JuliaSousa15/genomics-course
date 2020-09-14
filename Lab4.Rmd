@@ -44,18 +44,66 @@ datatable(report_03_11_2020)
 
 ```{r}
 
+report_03_13_2020 <- read_csv("https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/03-13-2020.csv") %>% 
+  rename(Country_Region = "Country/Region", Province_State = "Province/State")
 
+str(report_03_13_2020)
+
+view(report_03_13_2020)
+
+```
+
+```{r}
+
+report_09_13_2020 <- read_csv("https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/09-13-2020.csv")
+
+str(report_09_13_2020)
+
+view(report_09_13_2020)
 
 ```
 
 
+```{r}
+
+report_09_13_2020 %>% 
+  group_by(Country_Region) %>% 
+  summarize(total_counts = n())
+
+view(report_09_13_2020)
+
+```
+
+
+```{r}
+
+report_09_13_2020 %>% 
+  filter(Country_Region == "US") %>% 
+  group_by(Province_State) %>% 
+  summarize(Confirmed = sum(Confirmed))
+
+```
+
+
+```{r}
+
+report_09_13_2020 %>%
+  group_by(Country_Region) %>% 
+  summarize(Total_Deaths = sum(Deaths)) %>% 
+  arrange(desc(Total_Deaths)) %>% 
+  slice(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+  
+  
+```
+
+
+# Introductino to R Graphics
+
+[Data Visualization with ggplot2](ggplot2_Data_Visualization.html)
 
 
 
-
-
-
-
+# Exercises (Part 2)
 
 
 
