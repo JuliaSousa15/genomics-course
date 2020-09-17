@@ -105,9 +105,104 @@ report_09_13_2020 %>%
 
 # Exercises (Part 2)
 
+```{r}
+# Top 10 countries with the most deaths on 3/13/2020 using a scatter plot and bar graph
+
+Top10Deaths <- report_03_13_2020 %>% 
+  group_by(Country_Region) %>% 
+  summarize(Deaths = sum(Deaths)) %>% 
+  arrange(desc(Deaths)) %>% 
+  slice_max(Deaths, n= 10)
+
+```
+
+```{r}
+
+ggplot(data = Top10Deaths, aes(x = Country_Region, y = Deaths)) + 
+  geom_point()
+
+
+ggplot(data = Top10Deaths, aes(x = Country_Region, y = Deaths)) +
+  geom_bar(stat = 'identity')
+
+```
+
+
+```{r}
+
+# Top 10 countries with the most confirmed cases on 3/13/2020 using a scatter plot and bar graph
+
+Top10Confirmed <- report_03_13_2020 %>% 
+  group_by(Country_Region) %>% 
+  summarize(Confirmed = sum(Confirmed)) %>% 
+  arrange(desc(Confirmed)) %>% 
+  slice_max(Confirmed, n= 10)
+
+```
+
+
+```{r}
+
+ggplot(data = Top10Confirmed, aes(x = Country_Region, y = Confirmed)) +
+  geom_point()
+
+
+ggplot(data = Top10Confirmed, aes(x = Country_Region, y = Confirmed)) +
+  geom_bar(stat = 'identity')
+
+```
+
+
+```{r}
+
+# Top 10 Counties with most deaths on 9/13/2020 using a scatter plot and bar graph
+
+Top10Deaths <- report_09_13_2020 %>% 
+  group_by(Country_Region) %>% 
+  summarize(Deaths = sum(Deaths)) %>% 
+  arrange(desc(Deaths)) %>% 
+  slice_max(Deaths, n= 10)
+
+```
+
+
+```{r}
+
+ggplot(data = Top10Deaths, aes(x = Country_Region, y = Deaths)) +
+  geom_point()
+
+
+ggplot(data = Top10Deaths, aes(x = Country_Region, y = Deaths)) +
+  geom_bar(stat = 'identity')
+
+```
 
 
 
+
+```{r}
+
+# Top 10 countries with the most confirmed cases on 9/13/2020 using a scatter plot
+
+Top10Confirmed <- report_09_13_2020 %>% 
+  group_by(Country_Region) %>% 
+  summarize(Confirmed = sum(Confirmed)) %>% 
+  arrange(desc(Confirmed)) %>% 
+  slice_max(Confirmed, n= 10)
+
+```
+
+
+```{r}
+
+ggplot(data = Top10Confirmed, aes(x = Country_Region, y = Confirmed)) +
+  geom_point()
+
+
+ggplot(data = Top10Confirmed, aes(x = Country_Region, y = Confirmed)) +
+  geom_bar(stat = 'identity')
+
+```
 
 
 
