@@ -9,7 +9,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-![These are my dogs, Penny and Sonny!](IMG_2644.jpg)
+![These are my dogs, Sonny and Penny!](IMG_2644.jpg)
 
 # Labs
 
@@ -23,5 +23,6 @@ knitr::opts_chunk$set(echo = TRUE)
 
 * Lab 4: [Data Wrangling and Graphing COVID-19 Reporting Data, Part 1](Lab4.html)
 
+* Lab 5: [Data Wrangling and Graphing COVID-19 Reporting Data, Part 2](Lab5.html)
 
 
