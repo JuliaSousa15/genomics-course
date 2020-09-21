@@ -25,4 +25,5 @@ knitr::opts_chunk$set(echo = TRUE)
 
 * Lab 5: [Data Wrangling and Graphing COVID-19 Reporting Data, Part 2](Lab5.html)
 
+* Tutorial: [Data Visualization Tutorial](data_visualization.html)
 
