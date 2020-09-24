@@ -1,0 +1,206 @@
+---
+title: "Lab 5"
+author: "Julia Sousa"
+date: "9/21/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+
+library(tidyverse)
+
+```
+
+```{r}
+
+Confirmed_State_3_13 <- read_csv(url("https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/03-13-2020.csv")) %>% 
+  rename(Country_Region = "Country/Region", Province_State = "Province/State") %>% 
+  filter(Country_Region == "US") %>% 
+  group_by(Province_State, Country_Region) %>% 
+  summarise(Confirmed = sum(Confirmed))
+
+str(Confirmed_State_3_13)
+
+```
+
+
+```{r}
+
+Confirmed_State_9_13 <- read_csv(url("https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/09-13-2020.csv")) %>% 
+  filter(Country_Region == "US") %>% 
+  group_by(Province_State, Country_Region) %>% 
+  summarise(Confirmed = sum(Confirmed))
+
+str(Confirmed_State_9_13)
+
+```
+
+```{r}
+
+setdiff(Confirmed_State_9_13$Province_State, Confirmed_State_3_13$Province_State)
+
+```
+
+```{r}
+
+Confirmed_State_9_13 <- Confirmed_State_9_13 %>% 
+  filter(Province_State != "Recovered")
+
+```
+
+```{r}
+
+Confirmed_State_3_13_9_13_joined <- full_join(Confirmed_State_3_13,
+    Confirmed_State_9_13, by = c("Province_State"))
+head(Confirmed_State_3_13_9_13_joined)
+  
+```
+
+```{r}
+
+tail(Confirmed_State_3_13_9_13_joined, 5)
+
+```
+
+```{r}
+
+which(is.na(Confirmed_State_3_13_9_13_joined))
+
+```
+```{r}
+
+Confirmed_State_3_13_9_13_joined <- full_join(Confirmed_State_3_13,
+      Confirmed_State_9_13, by = c("Province_State")) %>% 
+  rename(Confirmed_3_13_2020 = "Confirmed.x", Confirmed_9_13_2020 = "Confirmed.y") %>% 
+  select(-Country_Region.x, -Country_Region.y) %>% 
+  replace_na(list(Confirmed_3_13_2020 = 0))
+head(Confirmed_State_3_13_9_13_joined)
+
+```
+```{r}
+
+which(is.na(Confirmed_State_3_13_9_13_joined))
+
+```
+
+# Switching Between Wide and Long Table Formats
+
+```{r}
+
+Confirmed_State_3_13_9_13_joined_long <- Confirmed_State_3_13_9_13_joined %>% 
+  pivot_longer(-c(Province_State),
+               names_to = "Date", values_to = "Confirmed")
+
+```
+
+```{r}
+
+# to adjust figure size {r, fig.width = 5, fig.height = 10}
+ggplot(Confirmed_State_3_13_9_13_joined_long, aes(x = Confirmed, y = Province_State)) +
+  geom_point(aes(color = Date))
+
+```
+# Working with the Time Series Data
+
+```{r}
+
+time_series_confirmed <- read_csv(url("https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv")) %>% 
+  rename(Province_State = "Province/State", Country_Region = "Country/Region")
+
+```
+
+
+```{r}
+
+download.file(url="https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv",
+              destfile = "data/time_series_covid19_confirmed_global.csv")
+
+```
+
+```{r}
+
+time_series_confirmed <- read_csv("data/time_series_covid19_confirmed_global.csv") %>% 
+  rename(Province_State = "Province/State", Country_Region = "Country/Region")
+
+```
+
+
+```{r}
+
+head(time_series_confirmed)
+
+```
+
+```{r}
+
+time_series_confirmed_long <- time_series_confirmed %>% 
+  pivot_longer(-c(Province_State, Country_Region, Lat, Long),
+               names_to = "Date", values_to = "Confirmed")
+
+```
+
+```{r}
+
+head(time_series_confirmed_long)
+
+```
+
+```{r}
+
+download.file(url="https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv",
+              destfile = "data/time_series_covid19_deaths_global.csv")
+
+```
+```{r}
+
+time_series_deaths <- read_csv("data/time_series_covid19_deaths_global.csv") %>% 
+  rename(Province_State = "Province/State", Country_Region = "Country/Region")
+
+```
+
+```{r}
+
+time_series_deaths_long <- time_series_deaths %>% 
+  pivot_longer(-c(Province_State, Country_Region, Lat, Long),
+               names_to = "date", values_to = "Deaths")
+
+head(time_series_deaths_long)
+
+```
+
+```{r}
+
+time_series_confirmed_long <- time_series_confirmed_long %>% 
+  unite(Key, Province_State, Country_Region, Date, sep = ".", remove = FALSE)
+head(time_series_confirmed_long)
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
