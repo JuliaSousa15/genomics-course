@@ -300,10 +300,6 @@ time_series_long_joined_counts %>%
 Data Visualization tutorial [here](data_visualization.html), or go back to main page of my GitHub web site.
 
 #2
-revise example for joining tables using 6/13 and 9/13
-plot data as a bar plot
-adjust height in r code chunk header
-
 
 ```{r}
 
@@ -368,6 +364,8 @@ ggplot(Confirmed_06_13_09_13_joined_long, aes(x = Confirmed, y = Province_State)
 
 ```
 
+#3
+
 ```{r, fig.width = 10, fig.height = 20}
 
 ggplot(Confirmed_06_13_09_13_joined_long, aes(x = Confirmed, y = Province_State)) +
@@ -376,12 +374,21 @@ ggplot(Confirmed_06_13_09_13_joined_long, aes(x = Confirmed, y = Province_State)
 
 ```
 
+#4
 
 ```{r}
 
-
+time_series_long_joined %>% 
+  group_by(Date) %>% 
+  summarise_at(c("Confirmed", "Deaths"), sum) %>% 
+  ggplot(aes(x = Date, y = Deaths)) +
+  geom_point() +
+  geom_line() +
+  ggtitle("COVID-19 Deaths Worldwide")
 
 ```
+
+#5
 
 
 
