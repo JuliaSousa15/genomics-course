@@ -300,20 +300,88 @@ time_series_long_joined_counts %>%
 Data Visualization tutorial [here](data_visualization.html), or go back to main page of my GitHub web site.
 
 #2
+revise example for joining tables using 6/13 and 9/13
+plot data as a bar plot
+adjust height in r code chunk header
+
+
+```{r}
+
+Confirmed_06_13 <- read_csv(url("https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/06-13-2020.csv")) %>% 
+  filter(Country_Region == "US") %>% 
+  group_by(Province_State, Country_Region) %>%
+  summarise(Confirmed = sum(Confirmed))
+
+str(Confirmed_06_13)
+
+```
+
+```{r}
+
+Confirmed_09_13 <- read_csv(url("https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/09-13-2020.csv")) %>% 
+  filter(Country_Region == "US") %>% 
+  group_by(Province_State, Country_Region) %>%
+  summarise(Confirmed = sum(Confirmed))
+
+str(Confirmed_09_13)
+
+```
+
+```{r}
+
+Confirmed_06_13_09_13_joined <- full_join(Confirmed_06_13,
+      Confirmed_09_13, by = c("Province_State"))
+
+
+```
+
+
+```{r}
+
+Confirmed_06_13_09_13_joined <- full_join(Confirmed_06_13,
+      Confirmed_09_13, by = c("Province_State")) %>% 
+  rename(Confirmed_06_13 = "Confirmed.x", Confirmed_09_13 = "Confirmed.y") %>% 
+  select(-Country_Region.x, -Country_Region.y) %>% 
+  replace_na(list(Confirmed_06_13 = 0))
+
+```
+
+```{r}
+
+which(is.na(Confirmed_06_13_09_13_joined))
+
+```
+
+```{r}
+
+Confirmed_06_13_09_13_joined_long <- Confirmed_06_13_09_13_joined %>% 
+  pivot_longer(-c(Province_State),
+               names_to = "Date", values_to = "Confirmed")
+
+```
+
+
+```{r, fig.width = 10, fig.height = 20}
+
+ggplot(Confirmed_06_13_09_13_joined_long, aes(x = Confirmed, y = Province_State)) +
+  geom_col()
+
+```
+
+```{r, fig.width = 10, fig.height = 20}
+
+ggplot(Confirmed_06_13_09_13_joined_long, aes(x = Confirmed, y = Province_State)) +
+  geom_col() +
+  ggtitle("Confirmed COVID-19 Cases per Province/State")
+
+```
+
+
+```{r}
 
 
 
-
-
-
-
-
-
-
-
-
-
-
+```
 
 
 
