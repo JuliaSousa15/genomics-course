@@ -158,8 +158,62 @@ ggplotly(p)
 
 ```
 
+# Creating the Animations
+
+```{r}
+
+library(gganimate)
+library(gifski)
+
+```
+
+```{r}
+
+library(transformr)
+theme_set(theme_bw())
+
+```
 
 
+```{r}
+
+data_time <- time_series_long_joined %>% 
+    group_by(Country_Region,Date) %>% 
+    summarise_at(c("Confirmed", "Deaths"), sum) %>% 
+    filter (Country_Region %in% c("China","Korea, South","Japan","Italy","US")) 
+p <- ggplot(data_time, aes(x = Date,  y = Confirmed, color = Country_Region)) + 
+      geom_point() +
+      geom_line() +
+      ggtitle("Confirmed COVID-19 Cases") +
+      geom_point(aes(group = seq_along(Date))) +
+      transition_reveal(Date) 
+# Some people needed to use this line instead
+# animate(p,renderer = gifski_renderer(), end_pause = 15)
+animate(p, end_pause = 15)
+
+```
+
+
+```{r}
+
+data_time <- time_series_long_joined %>% 
+    group_by(Country_Region,Date) %>% 
+    summarise_at(c("Confirmed", "Deaths"), sum) %>% 
+    filter (Country_Region %in% c("China","Korea, South","Japan","Italy","US")) 
+p <- ggplot(data_time, aes(x = Date,  y = Confirmed, color = Country_Region)) + 
+      geom_point() +
+      geom_line() +
+      ggtitle("Confirmed COVID-19 Cases") +
+      geom_point(aes(group = seq_along(Date))) +
+      transition_reveal(Date)
+
+# Some people needed to use this line instead
+animate(p,renderer = gifski_renderer(), end_pause = 15)
+
+anim_save("deaths_5_countries.gif", p)
+
+
+```
 
 
 
