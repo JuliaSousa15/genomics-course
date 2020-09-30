@@ -227,6 +227,8 @@ library(lubridate)
 time_series_long_joined$Date <- mdy(time_series_long_joined$Date)
 
 ```
+
+
 ```{r}
 
 time_series_long_joined_counts <- time_series_long_joined %>% 
@@ -388,7 +390,83 @@ time_series_long_joined %>%
 
 ```
 
+
 #5
+
+```{r}
+
+time_series_long_joined_new_column <- time_series_long_joined %>% 
+  mutate(Deaths_Confirmed = Deaths / Confirmed) %>% 
+  select(Country_Region, Date, Deaths_Confirmed)
+  view(time_series_long_joined_new_column)
+
+```
+
+#6
+
+```{r}
+time_series_long_joined_new_column %>% 
+  filter(Country_Region == "US") %>% 
+  summarize(Deaths_Confirmed, Date) %>% 
+  ggplot(aes(x = Date, y = Deaths_Confirmed)) +
+  geom_point() +
+  geom_line() +
+  ggtitle("US Deaths/Confirmed Cases per Day")
+
+```
+
+#7
+
+```{r}
+
+top_10_countries <- time_series_long_joined %>%
+  group_by(Country_Region, sum(Deaths), Date) %>% 
+  summarise(Confirmed = sum(Confirmed), Deaths = sum(Deaths), min_deaths = min(Deaths)) %>% 
+  arrange(desc(min_deaths)) %>% 
+  slice(1:10)
+
+ggplot(data = top_10_countries, mapping = aes(x = Date, y = Deaths)) +
+  geom_point() +
+  geom_line() 
+
+```
+
+
+#8
+
+```{r}
+
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
