@@ -434,8 +434,10 @@ ggplot(data = top_10_countries, mapping = aes(x = Date, y = Deaths)) +
 
 #8
 
+
 ```{r}
 
+# Using Facet_Wraps make a graph from the times series data with the 10 countries with the hightest death total. Format the table to look nice in the report by changing the number of rows in your graph and/or adjusting the height in the R code chunk header.
 
 
 ```
