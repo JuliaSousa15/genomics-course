@@ -27,5 +27,14 @@ knitr::opts_chunk$set(echo = TRUE)
 
 * Tutorial: [Data Visualization Tutorial](data_visualization.html)
 
-* Lab 5 Extra: [Lab Extra: Interactive Graphs and Animations from the COVID-19 Reporting Data](Lab5Extra.html)
+* Lab 5x: [Lab Extra: Interactive Graphs and Animations from the COVID-19 Reporting Data](Lab5Extra.html)
+
+* Lab 6: [Data Maps and Interactive Graphs from the COVID-19 Reporting Data](Lab6.html)
+
+* Lab 6x: [R Shiny apps using the COVID-19 Reporting Data](Lab6x.html)
+
+
+
+
+
 
