@@ -425,7 +425,7 @@ top_10_countries <- time_series_long_joined %>%
   arrange(desc(min_deaths)) %>% 
   slice(1:10)
 
-ggplot(data = top_10_countries, mapping = aes(x = Date, y = Deaths)) +
+  ggplot(data = top_10_countries, mapping= aes(x <- Date, y <- Deaths)) +
   geom_point() +
   geom_line() 
 
@@ -434,39 +434,37 @@ ggplot(data = top_10_countries, mapping = aes(x = Date, y = Deaths)) +
 
 #8
 
-
 ```{r}
 
-# Using Facet_Wraps make a graph from the times series data with the 10 countries with the hightest death total. Format the table to look nice in the report by changing the number of rows in your graph and/or adjusting the height in the R code chunk header.
+top_10_countries %>% 
+  group_by(Country_Region, sum(Deaths), Date) %>% 
+  summarise(Deaths = sum(Deaths)) %>%
+  arrange(desc(Deaths)) %>%        
+  slice_max(Deaths, n = 10)
 
+ggplot(data = top_10_countries, mapping = aes(x = Date, y = Deaths)) +
+  geom_point() +
+  geom_line() +
+  ggtitle("Top 10 Countries with Highest COVID-19 Deaths") +
+  facet_wrap(~Country_Region, ncol=2, scales="free_y")
 
 ```
 
 
 
+```{r}
 
+top_10_countries %>% 
+  group_by(Country_Region, sum(Deaths), Date) %>% 
+  summarise_at(c("Deaths"), sum) %>% 
+  filter(Country_Region %in% c("Brazil", "France", "India", "Iran", "Italy", "Mexico", "Peru", "Spain", "United Kingdom", "US")) %>% 
+  ggplot(data = top_10_countries, mapping = aes(x = Date, y = Deaths, color = Country_Region)) +
+  geom_point() +
+  geom_line() +
+  ggtitle("Top 10 Countries with Highest COVID-19 Deaths") +
+  facet_wrap(~ Country_Region)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+```
 
 
 
