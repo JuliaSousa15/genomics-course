@@ -417,15 +417,29 @@ time_series_long_joined_new_column %>%
 
 #7
 
+
+```{r}
+
+top10cases <- time_series_long_joined %>% 
+  group_by(Country_Region) %>% 
+  summarise(Deaths = sum(Deaths)) %>% 
+  arrange(desc(Deaths)) %>% 
+  slice(1:10)
+
+
+top10cases
+
+```
+
+
 ```{r}
 
 top_10_countries <- time_series_long_joined %>%
-  group_by(Country_Region, sum(Deaths), Date) %>% 
-  summarise(Confirmed = sum(Confirmed), Deaths = sum(Deaths), min_deaths = min(Deaths)) %>% 
-  arrange(desc(min_deaths)) %>% 
-  slice(1:10)
+  group_by(Date, Country_Region) %>% 
+  summarise(Confirmed = sum(Confirmed), Deaths = sum(Deaths)) %>% 
+  filter(Country_Region %in% top10cases$Country_Region)
 
-  ggplot(data = top_10_countries, mapping= aes(x <- Date, y <- Deaths)) +
+  ggplot(data = top_10_countries, mapping= aes(x = Date, y = Deaths, color = Country_Region)) +
   geom_point() +
   geom_line() 
 
@@ -434,15 +448,16 @@ top_10_countries <- time_series_long_joined %>%
 
 #8
 
+
 ```{r}
 
 top_10_countries %>% 
-  group_by(Country_Region, sum(Deaths), Date) %>% 
-  summarise(Deaths = sum(Deaths)) %>%
+  group_by(Country_Region, Date) %>% 
+  summarise_at(c("Confirmed", "Deaths"), sum) %>%
   arrange(desc(Deaths)) %>%        
-  slice_max(Deaths, n = 10)
+  slice_max(Deaths, n = 10) %>% 
 
-ggplot(data = top_10_countries, mapping = aes(x = Date, y = Deaths)) +
+ggplot(data = top_10_countries, mapping = aes(x = Date, y = Deaths, color = Country_Region)) +
   geom_point() +
   geom_line() +
   ggtitle("Top 10 Countries with Highest COVID-19 Deaths") +
@@ -452,19 +467,34 @@ ggplot(data = top_10_countries, mapping = aes(x = Date, y = Deaths)) +
 
 
 
-```{r}
 
-top_10_countries %>% 
-  group_by(Country_Region, sum(Deaths), Date) %>% 
-  summarise_at(c("Deaths"), sum) %>% 
-  filter(Country_Region %in% c("Brazil", "France", "India", "Iran", "Italy", "Mexico", "Peru", "Spain", "United Kingdom", "US")) %>% 
-  ggplot(data = top_10_countries, mapping = aes(x = Date, y = Deaths, color = Country_Region)) +
-  geom_point() +
-  geom_line() +
-  ggtitle("Top 10 Countries with Highest COVID-19 Deaths") +
-  facet_wrap(~ Country_Region)
 
-```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
