@@ -20,6 +20,7 @@ library(mapdata)
 library(lubridate)
 library(viridis)
 library(wesanderson)
+library(plotly)
 
 ```
 
@@ -274,34 +275,30 @@ updated_world <- as_tibble(map_data("world"))
 
 setdiff(updated_world$region, updated_daily_report$Country_Region)
 
+```
+
+
+```{r}
+
+updated_world <- as_tibble(map_data("world")) %>% 
+ mutate(region = str_replace_all(region, c("USA" = "US", "Czech Republic" = "Czechia",  
+        "Ivory Coast" = "Cote d'Ivoire", "Democratic Republic of the Congo" = "Congo (Kinshasa)", 
+        "Republic of Congo" = "Congo (Brazzaville)")))
+
+updated_country_join <- left_join(world, updated_daily_report, by = c("region" = "Country_Region"))
 
 ```
 
 
 ```{r}
 
-world <- as_tibble(map_data("world")) %>% 
- mutate(region = str_replace_all(region, c("USA" = "US", "Czech Republic" = "Czechia",  
-        "Ivory Coast" = "Cote d'Ivoire", "Democratic Republic of the Congo" = "Congo (Kinshasa)", 
-        "Republic of Congo" = "Congo (Brazzaville)")))
-
-# Join the covid report with the map data
-country_join <- left_join(world, daily_report, by = c("region" = "Country_Region"))
-
-# Create the graph
-ggplotly(
-ggplot(data = world, mapping = aes(x = long, y = lat, text = region, group = group)) + 
-  coord_fixed(1.3) + 
-# Add data layer
-  geom_polygon(data = country_join, aes(fill = Deaths), color = "black") +
-  scale_fill_gradientn(colours = 
-                         wes_palette("Zissou1", 100, type = "continuous")) +
-  labs(title = "COVID-19 Deaths")
-)
+ggplotly(ggplot(data = updated_world, mapping = aes(x = long, y = lat, text = region, group = group)) +
+           coord_fixed(1.3) +
+           geom_polygon(data = updated_country_join, aes(fill = Deaths), color = "black") +
+           scale_fill_gradientn(colours = wes_palette("Zissou1", 100, type = "continuous")) +
+           labs(title = "9/26/2020 COVID-19 Deaths"))
 
 ```
-
-
 
 
 
