@@ -305,7 +305,7 @@ ggplotly(
 
 ```{r}
 
-updated_anisa <-   read_csv(url("https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/04-05-2020.csv")) %>% 
+updated_anisa <-   read_csv(url("https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/09-26-2020.csv")) %>% 
   rename(Long = "Long_") %>% 
   filter(Country_Region == "US") %>% 
   filter (!Province_State %in% c("Alaska","Hawaii", "American Samoa",
@@ -345,6 +345,25 @@ ggplot(updated_anisa, aes(x = Long, y = Lat, size = Confirmed)) +
     coord_fixed(ratio=1.5)
 
 ```
+
+
+#3
+
+```{r}
+
+
+
+```
+
+
+
+
+
+
+
+
+
+
 
 
 
