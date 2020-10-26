@@ -266,13 +266,6 @@ ggplot(data = world, mapping = aes(x = long, y = lat, text = region, group = gro
 #1
 
 
-
-```{r}
-
-```
-
-
-
 ```{r}
 
 report_09_26 <- read_csv(url("https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/09-26-2020.csv")) %>%   rename(Long = "Long_") %>% 
@@ -408,7 +401,9 @@ ggplot(data = ca_county, mapping = aes(x = long, y = lat, group = group)) +
 
 ```
 
+#5
 
+[Link for static maps, interactive graphs, and references](lab6_references.html)
 
 
 
