@@ -1,0 +1,38 @@
+---
+title: "Lab 6x"
+author: "Julia Sousa"
+date: "9/30/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+
+library(shiny)
+runExample("01_hello")
+
+```
+
+
+# Structure of an app.R file
+
+
+```{r}
+
+read_csv(url("https://raw.githubusercontent.com/jeffreyblanchard/EvoGeno/master/ShinyApps/Lab6x_example_5countries_app.R"))
+
+```
+
+
+```{r}
+
+read_csv(url("https://raw.githubusercontent.com/jeffreyblanchard/EvoGeno/master/ShinyApps/Lab6x_example_map2_app.R"))
+
+```
+
+
+
