@@ -3,6 +3,7 @@ title: "Lab 6"
 author: "Julia Sousa"
 date: "9/30/2020"
 output: html_document
+bibliography: references.bib
 ---
 
 ```{r setup, include=FALSE}
@@ -403,10 +404,11 @@ ggplot(data = ca_county, mapping = aes(x = long, y = lat, group = group)) +
 
 #5
 
-[Link for static maps, interactive graphs, and references](lab6_references.html)
+[Link for static maps and interactive graphs](lab6_references.html)
 
+Report made in R [@RCoreTeam], using data collected from the GitHub repository for Novel Coronavirus [@Dong2020].
 
-
+## References
 
 
 
