@@ -1,5 +1,5 @@
 ---
-title: "References"
+title: "Static Maps and Interactive Graphs"
 author: "Julia Sousa"
 date: "10/26/2020"
 output: html_document
@@ -360,8 +360,6 @@ ggplot(data = ca_county, mapping = aes(x = long, y = lat, group = group)) +
   theme_classic()
 
 ```
-
-## References
 
 
 
