@@ -32,7 +32,15 @@ BiocManager::install("rnaseqGene")
 ```{r}
 
 BiocManager::install("airway")
+
+```
+
+```{r}
 BiocManager::install("tximeta")
+
+```
+
+```{r}
 BiocManager::install("DESeq2")
 BiocManager::install("Gviz")
 BiocManager::install("sva")
@@ -40,6 +48,70 @@ BiocManager::install("RUVSeq")
 BiocManager::install("fission")
 
 ```
+
+```{r}
+
+library(tidyverse)
+library(ggplot2)
+library(dplyr)
+
+```
+
+
+# 2.3 Reading in data with tximeta
+
+
+```{r}
+
+library("airway")
+
+```
+
+```{r}
+dir <- system.file("extdata", package="airway", mustWork=TRUE)
+
+```
+
+
+```{r}
+
+list.files(dir)
+
+```
+
+```{r}
+
+list.files(file.path(dir, "quants"))
+
+```
+
+```{r}
+
+csvfile <- file.path(dir, "sample_table.csv")
+coldata <- read.csv(csvfile, row.names=1, stringsAsFactors=FALSE)
+coldata
+
+```
+
+```{r}
+
+coldata <- coldata[1:2,]
+coldata$names <- coldata$Run
+coldata$files <- file.path(dir, "quants", coldata$names, "quant.sf.gz")
+file.exists(coldata$files)
+
+```
+
+
+
+
+
+
+
+
+
+
+
 
 
 
