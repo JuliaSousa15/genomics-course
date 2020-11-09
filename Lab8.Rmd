@@ -14,7 +14,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 #1
 
-This is the phylogenetic tree created from the set of rRNA sequences provided from Moodle, using NGPhylogeny.fr. It 
+This is the phylogenetic tree created from the set of rRNA sequences provided from Moodle, using NGPhylogeny.fr. It shows the evolutionary relatedness of the different species, based on their genetic sequences.
 
 ![](tree.PNG)
 
