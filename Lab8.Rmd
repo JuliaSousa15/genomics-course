@@ -1,0 +1,47 @@
+---
+title: "Lab 8"
+author: "Julia Sousa"
+date: "10/19/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+# Exercises
+
+#1
+
+This is the phylogenetic tree created from the set of rRNA sequences provided from Moodle, using NGPhylogeny.fr. It 
+
+![](tree.PNG)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
