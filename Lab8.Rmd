@@ -19,6 +19,17 @@ This is the phylogenetic tree created from the set of rRNA sequences provided fr
 ![](tree.PNG)
 
 
+#2
+
+Instructions: Align and do phylogenetic analysis off the sequences in CIPRES using MAFFT and FastTreeMP. Here is my step by step tutorial on using CIPRES. You will need to click on Parameter Set and Save even if you don’t change the parameters. Download the fastree_result.tre to your computer.
+
+
+#3
+
+
+
+
+
 
 
 
