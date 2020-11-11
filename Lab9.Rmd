@@ -599,17 +599,12 @@ str_split(x, boundary("word"))[[1]]
 
 ## Exercise 1 (14.4.5.1)
 
+```{r}
 
+x <- "apples, bananas, pears"
+str_split(x, ", +(and +)?")[[1]]
 
-
-
-
-
-
-
-
-
-
+```
 
 
 

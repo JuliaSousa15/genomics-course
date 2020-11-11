@@ -1368,26 +1368,26 @@ summary {
 <h1>14.3.1 Basic matches</h1>
 <pre class="r"><code>x &lt;- c(&quot;apple&quot;, &quot;banana&quot;, &quot;pear&quot;)
 str_view(x, &quot;an&quot;)</code></pre>
-<div id="htmlwidget-497ab255c60c42e578e5" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-497ab255c60c42e578e5">{"x":{"html":"<ul>\n  <li>apple<\/li>\n  <li>b<span class='match'>an<\/span>ana<\/li>\n  <li>pear<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-062723c86712e4ce78d7" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-062723c86712e4ce78d7">{"x":{"html":"<ul>\n  <li>apple<\/li>\n  <li>b<span class='match'>an<\/span>ana<\/li>\n  <li>pear<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 <pre class="r"><code>str_view(x, &quot;.a.&quot;)</code></pre>
-<div id="htmlwidget-5062e24282d57700a4bc" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-5062e24282d57700a4bc">{"x":{"html":"<ul>\n  <li>apple<\/li>\n  <li><span class='match'>ban<\/span>ana<\/li>\n  <li>p<span class='match'>ear<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-8ff33542756dcc70063d" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-8ff33542756dcc70063d">{"x":{"html":"<ul>\n  <li>apple<\/li>\n  <li><span class='match'>ban<\/span>ana<\/li>\n  <li>p<span class='match'>ear<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 <pre class="r"><code>dot &lt;- &quot;\\.&quot;
 
 writeLines(dot)</code></pre>
 <pre><code>## \.</code></pre>
 <pre class="r"><code>x &lt;- c(&quot;abc&quot;, &quot;a.c&quot;, &quot;bef&quot;)
 str_view(x, &quot;a\\.c&quot;)</code></pre>
-<div id="htmlwidget-90bc5677c0e7330a26ec" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-90bc5677c0e7330a26ec">{"x":{"html":"<ul>\n  <li>abc<\/li>\n  <li><span class='match'>a.c<\/span><\/li>\n  <li>bef<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-ddf781b089a15de1aeeb" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-ddf781b089a15de1aeeb">{"x":{"html":"<ul>\n  <li>abc<\/li>\n  <li><span class='match'>a.c<\/span><\/li>\n  <li>bef<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 <pre class="r"><code>x&lt;- &quot;a\\b&quot;
 
 writeLines(x)</code></pre>
 <pre><code>## a\b</code></pre>
 <pre class="r"><code>str_view(x, &quot;\\\\&quot;)</code></pre>
-<div id="htmlwidget-f22dd3b9ecd9b49e4363" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-f22dd3b9ecd9b49e4363">{"x":{"html":"<ul>\n  <li>a<span class='match'>\\<\/span>b<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-277e094a33bcc2a45bae" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-277e094a33bcc2a45bae">{"x":{"html":"<ul>\n  <li>a<span class='match'>\\<\/span>b<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="exercise-1-14.3.1.1" class="section level1">
 <h1>Exercise 1 (14.3.1.1)</h1>
@@ -1397,41 +1397,41 @@ writeLines(x)</code></pre>
 <h1>14.3.2. Anchors</h1>
 <pre class="r"><code>x &lt;- c(&quot;apple&quot;, &quot;banana&quot;, &quot;pear&quot;)
 str_view(x, &quot;^a&quot;)</code></pre>
-<div id="htmlwidget-8c43b43f38a79d86d347" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-8c43b43f38a79d86d347">{"x":{"html":"<ul>\n  <li><span class='match'>a<\/span>pple<\/li>\n  <li>banana<\/li>\n  <li>pear<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-29ed142e7796e007c088" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-29ed142e7796e007c088">{"x":{"html":"<ul>\n  <li><span class='match'>a<\/span>pple<\/li>\n  <li>banana<\/li>\n  <li>pear<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 <pre class="r"><code>str_view(x, &quot;a$&quot;)</code></pre>
-<div id="htmlwidget-76b39f83fd6b3ec2d532" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-76b39f83fd6b3ec2d532">{"x":{"html":"<ul>\n  <li>apple<\/li>\n  <li>banan<span class='match'>a<\/span><\/li>\n  <li>pear<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-e0550f20a7440323dd83" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-e0550f20a7440323dd83">{"x":{"html":"<ul>\n  <li>apple<\/li>\n  <li>banan<span class='match'>a<\/span><\/li>\n  <li>pear<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 <pre class="r"><code>x &lt;- c(&quot;apple pie&quot;, &quot;apple&quot;, &quot;apple cake&quot;)
 str_view(x, &quot;apple&quot;)</code></pre>
-<div id="htmlwidget-a0d855eaa73c3c30577c" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-a0d855eaa73c3c30577c">{"x":{"html":"<ul>\n  <li><span class='match'>apple<\/span> pie<\/li>\n  <li><span class='match'>apple<\/span><\/li>\n  <li><span class='match'>apple<\/span> cake<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-baf17561189b19bbb4a7" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-baf17561189b19bbb4a7">{"x":{"html":"<ul>\n  <li><span class='match'>apple<\/span> pie<\/li>\n  <li><span class='match'>apple<\/span><\/li>\n  <li><span class='match'>apple<\/span> cake<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 <pre class="r"><code>str_view(x, &quot;^apple$&quot;)</code></pre>
-<div id="htmlwidget-11f51c6d44b13c3d3c39" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-11f51c6d44b13c3d3c39">{"x":{"html":"<ul>\n  <li>apple pie<\/li>\n  <li><span class='match'>apple<\/span><\/li>\n  <li>apple cake<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-e38e8fac3324d155369e" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-e38e8fac3324d155369e">{"x":{"html":"<ul>\n  <li>apple pie<\/li>\n  <li><span class='match'>apple<\/span><\/li>\n  <li>apple cake<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="exercise-1-14.3.2.1" class="section level1">
 <h1>Exercise 1 (14.3.2.1)</h1>
 <p>You would match the literal string “<span class="math inline">\(^\)</span>” by:</p>
 <pre class="r"><code>str_view(&quot;$^$&quot;, &quot;ab$^$sfas&quot;)</code></pre>
-<div id="htmlwidget-aeecd21460ba49b0f7c2" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-aeecd21460ba49b0f7c2">{"x":{"html":"<ul>\n  <li>$^$<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-7ebbc31312b84677f231" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-7ebbc31312b84677f231">{"x":{"html":"<ul>\n  <li>$^$<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 <div id="character-classes-and-alternatives" class="section level2">
 <h2>14.3.3 Character classes and alternatives</h2>
 <pre class="r"><code>x &lt;- c(&quot;abc&quot;, &quot;a.c&quot;, &quot;a*c&quot;, &quot;a c&quot;)
 str_view(x, &quot;a[.]c&quot;)</code></pre>
-<div id="htmlwidget-9fafd7b9ff167df658f7" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-9fafd7b9ff167df658f7">{"x":{"html":"<ul>\n  <li>abc<\/li>\n  <li><span class='match'>a.c<\/span><\/li>\n  <li>a*c<\/li>\n  <li>a c<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-dd7d7fd0a6e3c6d63c18" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-dd7d7fd0a6e3c6d63c18">{"x":{"html":"<ul>\n  <li>abc<\/li>\n  <li><span class='match'>a.c<\/span><\/li>\n  <li>a*c<\/li>\n  <li>a c<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 <pre class="r"><code>str_view(x, &quot;.[*]c&quot;)</code></pre>
-<div id="htmlwidget-913ba8593a0144522482" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-913ba8593a0144522482">{"x":{"html":"<ul>\n  <li>abc<\/li>\n  <li>a.c<\/li>\n  <li><span class='match'>a*c<\/span><\/li>\n  <li>a c<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-0fad0176848af6adac71" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-0fad0176848af6adac71">{"x":{"html":"<ul>\n  <li>abc<\/li>\n  <li>a.c<\/li>\n  <li><span class='match'>a*c<\/span><\/li>\n  <li>a c<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 <pre class="r"><code>str_view(x, &quot;a[ ]&quot;)</code></pre>
-<div id="htmlwidget-94f2451c8c55507094c9" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-94f2451c8c55507094c9">{"x":{"html":"<ul>\n  <li>abc<\/li>\n  <li>a.c<\/li>\n  <li>a*c<\/li>\n  <li><span class='match'>a <\/span>c<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-e8293cf05ee488dd90a9" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-e8293cf05ee488dd90a9">{"x":{"html":"<ul>\n  <li>abc<\/li>\n  <li>a.c<\/li>\n  <li>a*c<\/li>\n  <li><span class='match'>a <\/span>c<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 <pre class="r"><code>x &lt;- c(&quot;grey&quot;, &quot;gray&quot;)
 str_view(x, &quot;gr(e|a)y&quot;)</code></pre>
-<div id="htmlwidget-c999d5c3b6e8925a1b45" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-c999d5c3b6e8925a1b45">{"x":{"html":"<ul>\n  <li><span class='match'>grey<\/span><\/li>\n  <li><span class='match'>gray<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-5b432afc19b8140b4547" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-5b432afc19b8140b4547">{"x":{"html":"<ul>\n  <li><span class='match'>grey<\/span><\/li>\n  <li><span class='match'>gray<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div id="exercise-1-14.3.3.1" class="section level1">
@@ -1488,29 +1488,29 @@ str_view(x, &quot;gr(e|a)y&quot;)</code></pre>
 <h2>14.3.4 Repitition</h2>
 <pre class="r"><code>x &lt;- &quot;188 is the longest year in Roman numerals: MDCCCLXXXVIII&quot;
 str_view(x, &quot;CC?&quot;)</code></pre>
-<div id="htmlwidget-17fc1b2481cfb429013a" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-17fc1b2481cfb429013a">{"x":{"html":"<ul>\n  <li>188 is the longest year in Roman numerals: MD<span class='match'>CC<\/span>CLXXXVIII<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-ac1731ed3676fd556aec" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-ac1731ed3676fd556aec">{"x":{"html":"<ul>\n  <li>188 is the longest year in Roman numerals: MD<span class='match'>CC<\/span>CLXXXVIII<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 <pre class="r"><code>str_view(x, &quot;CC+&quot;)</code></pre>
-<div id="htmlwidget-541f62803ee60c305832" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-541f62803ee60c305832">{"x":{"html":"<ul>\n  <li>188 is the longest year in Roman numerals: MD<span class='match'>CCC<\/span>LXXXVIII<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-8b8bfb7d7c27cc6190f3" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-8b8bfb7d7c27cc6190f3">{"x":{"html":"<ul>\n  <li>188 is the longest year in Roman numerals: MD<span class='match'>CCC<\/span>LXXXVIII<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 <pre class="r"><code>str_view(x, &#39;C[LX]+&#39;)</code></pre>
-<div id="htmlwidget-a741581f78d8651e3c02" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-a741581f78d8651e3c02">{"x":{"html":"<ul>\n  <li>188 is the longest year in Roman numerals: MDCC<span class='match'>CLXXX<\/span>VIII<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-b2b502283e5156cea2fb" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b2b502283e5156cea2fb">{"x":{"html":"<ul>\n  <li>188 is the longest year in Roman numerals: MDCC<span class='match'>CLXXX<\/span>VIII<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 <pre class="r"><code>str_view(x, &quot;C{2}&quot;)</code></pre>
-<div id="htmlwidget-b9c7044a0e3e0a3dfc0b" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-b9c7044a0e3e0a3dfc0b">{"x":{"html":"<ul>\n  <li>188 is the longest year in Roman numerals: MD<span class='match'>CC<\/span>CLXXXVIII<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-8741f87de4136106acd6" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-8741f87de4136106acd6">{"x":{"html":"<ul>\n  <li>188 is the longest year in Roman numerals: MD<span class='match'>CC<\/span>CLXXXVIII<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 <pre class="r"><code>str_view(x, &quot;C{2,}&quot;)</code></pre>
-<div id="htmlwidget-1f2bcbf27aaa68fdd1b1" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-1f2bcbf27aaa68fdd1b1">{"x":{"html":"<ul>\n  <li>188 is the longest year in Roman numerals: MD<span class='match'>CCC<\/span>LXXXVIII<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-459788927c0a9c8f5c02" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-459788927c0a9c8f5c02">{"x":{"html":"<ul>\n  <li>188 is the longest year in Roman numerals: MD<span class='match'>CCC<\/span>LXXXVIII<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 <pre class="r"><code>str_view(x, &quot;C{2,}&quot;)</code></pre>
-<div id="htmlwidget-97b826d211d31978fcc2" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-97b826d211d31978fcc2">{"x":{"html":"<ul>\n  <li>188 is the longest year in Roman numerals: MD<span class='match'>CCC<\/span>LXXXVIII<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-839ca4d594465e3c85e3" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-839ca4d594465e3c85e3">{"x":{"html":"<ul>\n  <li>188 is the longest year in Roman numerals: MD<span class='match'>CCC<\/span>LXXXVIII<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 <pre class="r"><code>str_view(x, &quot;C{2,3}?&quot;)</code></pre>
-<div id="htmlwidget-659ca3c0f27004822a29" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-659ca3c0f27004822a29">{"x":{"html":"<ul>\n  <li>188 is the longest year in Roman numerals: MD<span class='match'>CC<\/span>CLXXXVIII<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-b02256fdf5ef3a7919c8" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b02256fdf5ef3a7919c8">{"x":{"html":"<ul>\n  <li>188 is the longest year in Roman numerals: MD<span class='match'>CC<\/span>CLXXXVIII<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 <pre class="r"><code>str_view(x, &quot;C[LX]+?&quot;)</code></pre>
-<div id="htmlwidget-d192d8a14d2562c43546" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-d192d8a14d2562c43546">{"x":{"html":"<ul>\n  <li>188 is the longest year in Roman numerals: MDCC<span class='match'>CL<\/span>XXXVIII<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-17c5d11bfad4441f6d2b" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-17c5d11bfad4441f6d2b">{"x":{"html":"<ul>\n  <li>188 is the longest year in Roman numerals: MDCC<span class='match'>CL<\/span>XXXVIII<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div id="exercise-1-14.3.4.1" class="section level1">
@@ -1519,8 +1519,8 @@ str_view(x, &quot;CC?&quot;)</code></pre>
 <div id="grouping-and-backreferences" class="section level2">
 <h2>14.3.5 Grouping and backreferences</h2>
 <pre class="r"><code>str_view(fruit, &quot;(..)\\1&quot;, match = TRUE)</code></pre>
-<div id="htmlwidget-6decd10fb0a7412b556b" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-6decd10fb0a7412b556b">{"x":{"html":"<ul>\n  <li>b<span class='match'>anan<\/span>a<\/li>\n  <li><span class='match'>coco<\/span>nut<\/li>\n  <li><span class='match'>cucu<\/span>mber<\/li>\n  <li><span class='match'>juju<\/span>be<\/li>\n  <li><span class='match'>papa<\/span>ya<\/li>\n  <li>s<span class='match'>alal<\/span> berry<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-eea3397fcb42adaec59c" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-eea3397fcb42adaec59c">{"x":{"html":"<ul>\n  <li>b<span class='match'>anan<\/span>a<\/li>\n  <li><span class='match'>coco<\/span>nut<\/li>\n  <li><span class='match'>cucu<\/span>mber<\/li>\n  <li><span class='match'>juju<\/span>be<\/li>\n  <li><span class='match'>papa<\/span>ya<\/li>\n  <li>s<span class='match'>alal<\/span> berry<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div id="exercise-1-14.3.5.1" class="section level1">
@@ -1587,8 +1587,8 @@ str_count(x, &quot;a&quot;)</code></pre>
 <pre class="r"><code>str_count(&quot;abababa&quot;, &quot;aba&quot;)</code></pre>
 <pre><code>## [1] 2</code></pre>
 <pre class="r"><code>str_view_all(&quot;abababa&quot;, &quot;aba&quot;)</code></pre>
-<div id="htmlwidget-cd884014e3bd0f9f84c9" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-cd884014e3bd0f9f84c9">{"x":{"html":"<ul>\n  <li><span class='match'>aba<\/span>b<span class='match'>aba<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-0732956814c5c93b681f" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-0732956814c5c93b681f">{"x":{"html":"<ul>\n  <li><span class='match'>aba<\/span>b<span class='match'>aba<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div id="exercise-1-14.4.1.1." class="section level1">
@@ -1712,8 +1712,8 @@ head(matches)</code></pre>
 ## [57] &quot;The big red apple fell to the ground.&quot;</code></pre>
 <pre class="r"><code>more &lt;- sentences[str_count(sentences, colour_match) &gt; 1]
 str_view_all(more, colour_match)</code></pre>
-<div id="htmlwidget-d7e04f08064329d8c47a" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-d7e04f08064329d8c47a">{"x":{"html":"<ul>\n  <li>It is hard to erase <span class='match'>blue<\/span> or <span class='match'>red<\/span> ink.<\/li>\n  <li>The <span class='match'>green<\/span> light in the brown box flicke<span class='match'>red<\/span>.<\/li>\n  <li>The sky in the west is tinged with <span class='match'>orange<\/span> <span class='match'>red<\/span>.<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-2fae76473234fddc4020" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-2fae76473234fddc4020">{"x":{"html":"<ul>\n  <li>It is hard to erase <span class='match'>blue<\/span> or <span class='match'>red<\/span> ink.<\/li>\n  <li>The <span class='match'>green<\/span> light in the brown box flicke<span class='match'>red<\/span>.<\/li>\n  <li>The sky in the west is tinged with <span class='match'>orange<\/span> <span class='match'>red<\/span>.<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 <pre class="r"><code>str_extract(more, colour_match)</code></pre>
 <pre><code>## [1] &quot;blue&quot;   &quot;green&quot;  &quot;orange&quot;</code></pre>
 <pre class="r"><code>str_extract_all(more, colour_match)</code></pre>
@@ -1745,8 +1745,8 @@ colour_match2</code></pre>
 <pre><code>## [1] &quot;\\b(red|orange|yellow|green|blue|purple)\\b&quot;</code></pre>
 <pre class="r"><code>more2 &lt;- sentences[str_count(sentences, colour_match) &gt; 1]
 str_view_all(more2, colour_match2, match = TRUE)</code></pre>
-<div id="htmlwidget-436e305e1744ab5402ef" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-436e305e1744ab5402ef">{"x":{"html":"<ul>\n  <li>It is hard to erase <span class='match'>blue<\/span> or <span class='match'>red<\/span> ink.<\/li>\n  <li>The <span class='match'>green<\/span> light in the brown box flickered.<\/li>\n  <li>The sky in the west is tinged with <span class='match'>orange<\/span> <span class='match'>red<\/span>.<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-f6a1daba00d3a2383b2a" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-f6a1daba00d3a2383b2a">{"x":{"html":"<ul>\n  <li>It is hard to erase <span class='match'>blue<\/span> or <span class='match'>red<\/span> ink.<\/li>\n  <li>The <span class='match'>green<\/span> light in the brown box flickered.<\/li>\n  <li>The sky in the west is tinged with <span class='match'>orange<\/span> <span class='match'>red<\/span>.<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 <div id="grouped-matches" class="section level2">
 <h2>14.4.3 Grouped matches</h2>
 <pre class="r"><code>noun &lt;- &quot;(a|the) ([^ ]+)&quot;
@@ -1875,8 +1875,8 @@ fields %&gt;% str_split(&quot;:&quot;, n = 2, simplify = TRUE)</code></pre>
 ## [3,] &quot;Age&quot;     &quot; 35&quot;</code></pre>
 <pre class="r"><code>x &lt;- &quot;This is a sentence. This is another sentence.&quot;
 str_view_all(x, boundary(&quot;word&quot;))</code></pre>
-<div id="htmlwidget-cc6a2698194a894387c4" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-cc6a2698194a894387c4">{"x":{"html":"<ul>\n  <li><span class='match'>This<\/span> <span class='match'>is<\/span> <span class='match'>a<\/span> <span class='match'>sentence<\/span>. <span class='match'>This<\/span> <span class='match'>is<\/span> <span class='match'>another<\/span> <span class='match'>sentence<\/span>.<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-19b83e0060f0a3373904" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-19b83e0060f0a3373904">{"x":{"html":"<ul>\n  <li><span class='match'>This<\/span> <span class='match'>is<\/span> <span class='match'>a<\/span> <span class='match'>sentence<\/span>. <span class='match'>This<\/span> <span class='match'>is<\/span> <span class='match'>another<\/span> <span class='match'>sentence<\/span>.<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 <pre class="r"><code>str_split(x, &quot; &quot;)[[1]]</code></pre>
 <pre><code>## [1] &quot;This&quot;      &quot;is&quot;        &quot;a&quot;         &quot;sentence.&quot; &quot;This&quot;      &quot;is&quot;       
 ## [7] &quot;another&quot;   &quot;sentence.&quot;</code></pre>
@@ -1886,6 +1886,9 @@ str_view_all(x, boundary(&quot;word&quot;))</code></pre>
 </div>
 <div id="exercise-1-14.4.5.1" class="section level2">
 <h2>Exercise 1 (14.4.5.1)</h2>
+<pre class="r"><code>x &lt;- &quot;apples, bananas, pears&quot;
+str_split(x, &quot;, +(and +)?&quot;)[[1]]</code></pre>
+<pre><code>## [1] &quot;apples&quot;  &quot;bananas&quot; &quot;pears&quot;</code></pre>
 </div>
 </div>
 
