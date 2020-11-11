@@ -10,6 +10,230 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 
+## 14.3: Matching patterns with regular expresions
+
+```{r}
+
+library(tidyverse)
+library(stringr)
+
+```
+
+
+# 14.3.1 Basic matches
+
+```{r}
+
+x <- c("apple", "banana", "pear")
+str_view(x, "an")
+
+```
+
+
+```{r}
+
+str_view(x, ".a.")
+
+```
+
+
+```{r}
+
+dot <- "\\."
+
+writeLines(dot)
+
+```
+
+```{r}
+
+x <- c("abc", "a.c", "bef")
+str_view(x, "a\\.c")
+
+```
+
+```{r}
+
+x<- "a\\b"
+
+writeLines(x)
+
+```
+
+```{r}
+str_view(x, "\\\\")
+
+```
+
+# Exercise 1 (14.3.1.1)
+
+If "\" is used, it will escape the next character in the regular expression.
+If "\\" is used, it will mean "\" in the regular expression.
+If "\\\" is used, the first two backslashes will equal "\" in the regular expression, and the third backslash will escape the next character in the regular expression.
+
+
+
+# 14.3.2. Anchors
+
+```{r}
+
+x <- c("apple", "banana", "pear")
+str_view(x, "^a")
+
+```
+
+```{r}
+
+str_view(x, "a$")
+
+```
+
+```{r}
+
+x <- c("apple pie", "apple", "apple cake")
+str_view(x, "apple")
+
+```
+
+```{r}
+
+str_view(x, "^apple$")
+
+```
+
+# Exercise 1 (14.3.2.1)
+
+You would match the literal string "$^$" by:
+
+```{r}
+
+str_view("$^$", "ab$^$sfas")
+
+```
+
+
+## 14.3.3 Character classes and alternatives
+
+```{r}
+
+x <- c("abc", "a.c", "a*c", "a c")
+str_view(x, "a[.]c")
+
+```
+
+```{r}
+
+str_view(x, ".[*]c")
+
+```
+
+```{r}
+
+str_view(x, "a[ ]")
+
+```
+
+```{r}
+
+x <- c("grey", "gray")
+str_view(x, "gr(e|a)y")
+
+```
+
+# Exercise 1 (14.3.3.1)
+
+Words that start with a vowel:
+```{r}
+
+str_subset(stringr::words, "^[aeiou]")
+
+```
+
+Words that only contain consonants:
+```{r}
+
+str_subset(stringr::words, "[aeiou]", negate=TRUE)
+
+```
+
+Words that end with "ed", but not in "eed":
+```{r}
+
+str_subset(stringr::words, "[^ed]ed$")
+
+```
+
+Words ending in "ing" or "ise":
+```{r}
+
+str_subset(stringr::words, "i(ng|se)$")
+
+```
+
+
+## 14.3.4 Repitition
+
+```{r}
+
+x <- "188 is the longest year in Roman numerals: MDCCCLXXXVIII"
+str_view(x, "CC?")
+
+```
+
+```{r}
+
+str_view(x, "CC+")
+
+```
+
+```{r}
+
+str_view(x, 'C[LX]+')
+
+```
+
+```{r}
+
+str_view(x, "C{2}")
+
+```
+
+```{r}
+
+str_view(x, "C{2,}")
+
+```
+
+```{r}
+
+str_view(x, "C{2,}")
+
+```
+
+```{r}
+
+str_view(x, "C{2,3}?")
+
+```
+
+```{r}
+
+str_view(x, "C[LX]+?")
+
+```
+
+# Exercise 1 (14.3.4.1)
+
+? is equivalent to {0,1}
++ is equivalent to {1,}
+* is equivalent to {0,}
+
+
+
+## 14.3.5 Grouping and backreferences
+
+
+
 
 
 
