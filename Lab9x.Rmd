@@ -1,5 +1,5 @@
 ---
-title: "Lab 9x"
+title: "Lab 9x: Programming in R- Control Structures and Functions"
 author: "Julia Sousa"
 date: "11/10/2020"
 output: html_document
