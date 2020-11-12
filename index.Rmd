@@ -40,7 +40,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 * Lab 9x: [Programming in R- Control Structures and Functions](Lab9x.hmtl)
 
-
+* Lab 10: [Population genetics based on high throughout sequencing (HTS)](Lab10.html)
 
 
 
