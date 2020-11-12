@@ -459,6 +459,25 @@ for(i in 1:4) {
 ## [1] &quot;b&quot;
 ## [1] &quot;c&quot;
 ## [1] &quot;d&quot;</code></pre>
+<pre class="r"><code>for(i in seq_along(x)) {   
+        print(x[i])
+}</code></pre>
+<pre><code>## [1] &quot;a&quot;
+## [1] &quot;b&quot;
+## [1] &quot;c&quot;
+## [1] &quot;d&quot;</code></pre>
+<pre class="r"><code>for(letter in x) {
+        print(letter)
+}</code></pre>
+<pre><code>## [1] &quot;a&quot;
+## [1] &quot;b&quot;
+## [1] &quot;c&quot;
+## [1] &quot;d&quot;</code></pre>
+<pre class="r"><code>for(i in 1:4) print(x[i])</code></pre>
+<pre><code>## [1] &quot;a&quot;
+## [1] &quot;b&quot;
+## [1] &quot;c&quot;
+## [1] &quot;d&quot;</code></pre>
 </div>
 <div id="nested-for-loops" class="section level2">
 <h2>Nested for loops</h2>
@@ -475,8 +494,8 @@ for(i in seq_len(nrow(x))) {
 ## [1] 4
 ## [1] 6</code></pre>
 </div>
-<div id="wile-loops" class="section level2">
-<h2>wile Loops</h2>
+<div id="while-loops" class="section level2">
+<h2>while Loops</h2>
 <pre class="r"><code>count &lt;- 0
 while(count &lt; 10) {
           print(count)
@@ -566,6 +585,153 @@ f()</code></pre>
 </div>
 <div id="exercises" class="section level2">
 <h2>Exercises</h2>
+<p>#Conditional statements with if-else</p>
+<pre class="r"><code>x &lt;- runif(1, 7, 13)
+if(x &gt; 5) {
+  y &lt;- 9
+} else {
+  y &lt;- 2
+}</code></pre>
+<p>#For loops</p>
+<pre class="r"><code>for(i in 5:15) {
+        print(i)
+}</code></pre>
+<pre><code>## [1] 5
+## [1] 6
+## [1] 7
+## [1] 8
+## [1] 9
+## [1] 10
+## [1] 11
+## [1] 12
+## [1] 13
+## [1] 14
+## [1] 15</code></pre>
+<pre class="r"><code>x &lt;- c(&quot;x&quot;, &quot;y&quot;, &quot;z&quot;)
+for(i in 1:3) {
+        print(x[i])
+}</code></pre>
+<pre><code>## [1] &quot;x&quot;
+## [1] &quot;y&quot;
+## [1] &quot;z&quot;</code></pre>
+<pre class="r"><code>for(i in seq_along(x)) {
+        print(x[i])
+}</code></pre>
+<pre><code>## [1] &quot;x&quot;
+## [1] &quot;y&quot;
+## [1] &quot;z&quot;</code></pre>
+<pre class="r"><code>for(letter in x) {
+          print(letter)
+}</code></pre>
+<pre><code>## [1] &quot;x&quot;
+## [1] &quot;y&quot;
+## [1] &quot;z&quot;</code></pre>
+<pre class="r"><code>for(i in 1:3) print(x[i])</code></pre>
+<pre><code>## [1] &quot;x&quot;
+## [1] &quot;y&quot;
+## [1] &quot;z&quot;</code></pre>
+<p>#Nested for loops</p>
+<pre class="r"><code>x &lt;- matrix(1:10, 2, 5)
+for(i in seq_len(nrow(x))) {
+          for(j in seq_len(ncol(x))) {
+                    print(x[i, i])
+          }
+}</code></pre>
+<pre><code>## [1] 1
+## [1] 1
+## [1] 1
+## [1] 1
+## [1] 1
+## [1] 4
+## [1] 4
+## [1] 4
+## [1] 4
+## [1] 4</code></pre>
+<p>#while Loops</p>
+<pre class="r"><code>count &lt;- 3
+while(count &lt; 10) {
+          print(count)
+          count &lt;- count +1
+}</code></pre>
+<pre><code>## [1] 3
+## [1] 4
+## [1] 5
+## [1] 6
+## [1] 7
+## [1] 8
+## [1] 9</code></pre>
+<pre class="r"><code>z &lt;- 7
+set.seed(1)
+while(z &gt;= 4 &amp;&amp; z &lt;= 13) {
+          coin &lt;- rbinom(1, 2, 0.5)
+          
+          if(coin == 2) {
+                  z &lt;- z + 1
+          } else {
+                  z &lt;- z - 1
+          }
+}
+print(z)</code></pre>
+<pre><code>## [1] 3</code></pre>
+<p>#Your first function</p>
+<pre class="r"><code>f &lt;- function() {
+  
+}
+class(f)</code></pre>
+<pre><code>## [1] &quot;function&quot;</code></pre>
+<pre class="r"><code>f()</code></pre>
+<pre><code>## NULL</code></pre>
+<pre class="r"><code>f &lt;- function() {
+        cat(&quot;Happy Thanksgiving!\n&quot;)
+}
+f()</code></pre>
+<pre><code>## Happy Thanksgiving!</code></pre>
+<pre class="r"><code>f &lt;- function(num) {
+          for(i in seq_len(num)) {
+                  cat(&quot;Happy Thanksgiving!\n&quot;)
+          }
+}
+f(2)</code></pre>
+<pre><code>## Happy Thanksgiving!
+## Happy Thanksgiving!</code></pre>
+<pre class="r"><code>f &lt;- function(num) {
+          happy &lt;- &quot;Happy Thanksgiving!\n&quot;
+          for(i in seq_len(num)) {
+                    cat(happy)
+          }
+          chars &lt;- nchar(happy) * num
+          chars
+}
+happyholidays &lt;- f(5)</code></pre>
+<pre><code>## Happy Thanksgiving!
+## Happy Thanksgiving!
+## Happy Thanksgiving!
+## Happy Thanksgiving!
+## Happy Thanksgiving!</code></pre>
+<pre class="r"><code>print(happyholidays)</code></pre>
+<pre><code>## [1] 100</code></pre>
+<pre class="r"><code>f &lt;- function(num = 2) {
+          happy &lt;- &quot;Happy Thanksgiving!\n&quot;
+          for(i in seq_len(num)) {
+                  cat(happy)
+          }
+          chars &lt;- nchar(happy) * num
+          chars
+}
+f()</code></pre>
+<pre><code>## Happy Thanksgiving!
+## Happy Thanksgiving!</code></pre>
+<pre><code>## [1] 40</code></pre>
+<pre class="r"><code>f(3)</code></pre>
+<pre><code>## Happy Thanksgiving!
+## Happy Thanksgiving!
+## Happy Thanksgiving!</code></pre>
+<pre><code>## [1] 60</code></pre>
+<pre class="r"><code>f(num = 3)</code></pre>
+<pre><code>## Happy Thanksgiving!
+## Happy Thanksgiving!
+## Happy Thanksgiving!</code></pre>
+<pre><code>## [1] 60</code></pre>
 </div>
 
 
