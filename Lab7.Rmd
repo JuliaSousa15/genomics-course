@@ -1,5 +1,5 @@
 ---
-title: "Lab 7"
+title: "Lab 7: RNA-Seq workflow: gene-level exploratory analysis and differential expression"
 author: "Julia Sousa"
 date: "10/26/2020"
 output: html_document
@@ -9,6 +9,13 @@ bibliography: references.bib
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+
+```{r}
+
+library(tidyverse)
+
+```
+
 
 ```{r}
 
@@ -36,6 +43,7 @@ BiocManager::install("airway")
 ```
 
 ```{r}
+
 BiocManager::install("tximeta")
 
 ```
@@ -101,6 +109,9 @@ coldata$files <- file.path(dir, "quants", coldata$names, "quant.sf.gz")
 file.exists(coldata$files)
 
 ```
+
+
+
 
 
 
