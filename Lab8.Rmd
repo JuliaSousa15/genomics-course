@@ -1,5 +1,5 @@
 ---
-title: "Lab 8"
+title: "Lab 8: Sequence Alignment, Phylogenetic Analysis and Tree Visualization"
 author: "Julia Sousa"
 date: "10/19/2020"
 output: html_document
@@ -46,6 +46,7 @@ library(ggimage)
 ```
 
 #Basic trees
+
 
 
 
