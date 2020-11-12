@@ -1,5 +1,5 @@
 ---
-title: "Lab 4"
+title: "Lab 4: Data wrangling and graphing COVID-19 reporting data (Part I)"
 author: "Julia Sousa"
 date: "9/14/2020"
 output: html_document

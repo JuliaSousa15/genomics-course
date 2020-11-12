@@ -1,5 +1,5 @@
 ---
-title: "Lab 6"
+title: "Lab 6: Data Maps and Interactive Graphs from the COVID-19 reporting data"
 author: "Julia Sousa"
 date: "9/30/2020"
 output: html_document

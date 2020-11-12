@@ -1,5 +1,5 @@
 ---
-title: "Lab 2"
+title: "Lab 2: git, GitHub and Rstudio projects"
 author: "Julia Sousa"
 date: "9/7/2020"
 output: html_document

@@ -1,5 +1,5 @@
 ---
-title: "Lab_1"
+title: "Lab 1: Introduction to R and Reproducible Research"
 author: "Julia Sousa"
 date: "8/24/2020"
 output: html_document
