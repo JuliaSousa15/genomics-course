@@ -131,7 +131,11 @@ p + geom_tiplab()
 
 ```{r}
 
-ggtree(tree) + geom_nodepoint(alpha = 0.5, color = "orange", size = 3) + geom_tippoint(color = "purple", shape = "diamond") + geom_tiplab(color = "purple") + ggtitle("Phylogenetic tree with new aesthetics")
+ggtree(tree) +
+  geom_nodepoint(alpha = 0.5, color = "orange", size = 3) +
+  geom_tippoint(color = "purple", shape = "diamond") +
+  geom_tiplab(color = "purple") +
+  ggtitle("Phylogenetic tree with new aesthetics")
 
 ```
 
@@ -181,6 +185,58 @@ ggtree(tree) +
                   color = "red2", offset = .8)
 
 ```
+
+```{r}
+
+ggtree(tree) + 
+  geom_tiplab() +
+  geom_cladelabel(node = 17, label = "Some random clade",
+                  color = "red2", offset = .8) +
+  geom_cladelabel(node = 21, label = "A different clade",
+                  color = "blue", offset = .8)
+
+```
+
+```{r}
+
+ggtree(tree) + 
+  geom_tiplab() + 
+  geom_cladelabel(node=17, label="Some random clade", 
+                  color="red2", offset=.8, align=TRUE) + 
+  geom_cladelabel(node=21, label="A different clade", 
+                  color="blue", offset=.8, align=TRUE) + 
+  theme_tree2() + 
+  xlim(0, 70) + 
+  theme_tree()
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
