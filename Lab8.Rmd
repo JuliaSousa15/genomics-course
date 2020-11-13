@@ -127,15 +127,60 @@ p + geom_tiplab()
 
 ```
 
+#Exercise 2
+
+```{r}
+
+ggtree(tree) + geom_nodepoint(alpha = 0.5, color = "orange", size = 3) + geom_tippoint(color = "purple", shape = "diamond") + geom_tiplab(color = "purple") + ggtitle("Phylogenetic tree with new aesthetics")
+
+```
 
 
+#Internal node number
+
+```{r}
+
+ggtree(tree) + geom_text(aes(label = node), hjust = -.3)
+
+```
 
 
+```{r}
+
+ggtree(tree) + geom_tiplab()
+
+```
 
 
+```{r}
 
+MRCA(tree, c("C", "E"))
 
+```
 
+```{r}
+
+MRCA(tree, c("G", "H"))
+
+```
+
+#Labeling clades
+
+```{r}
+
+ggtree(tree) +
+  geom_cladelabel(node = 17, label = "Some randome clade", color = "red")
+
+```
+
+```{r}
+
+ggtree(tree) +
+  geom_tiplab() +
+  geom_cladelabel(node = 17, label = "Some random clade",
+                  color = "red2", offset = .8)
+
+```
 
 
 
