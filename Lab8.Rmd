@@ -47,14 +47,45 @@ library(ggimage)
 
 #Basic Trees
 
+```{r}
+
+library(tidyverse)
+library(ggtree)
+tree <- read.tree("data/tree_newick.nwk")
+tree
+
+```
 
 
+```{r}
+
+ggplot(tree) + geom_tree() + theme_tree()
+ggtree(tree)
+
+```
+
+```{r}
+
+ggtree(tree) + geom_treescale()
+ggtree(tree) + theme_tree2()
+
+```
 
 
+```{r}
+
+ggtree(tree, branch.length = "none")
+
+```
 
 
+```{r}
 
+ggtree(tree, branch.length = "none", color = "blue", size = 2, linetype = 3)
 
+```
+
+#Exercise 1
 
 
 
