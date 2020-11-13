@@ -87,6 +87,45 @@ ggtree(tree, branch.length = "none", color = "blue", size = 2, linetype = 3)
 
 #Exercise 1
 
+1: slanted phylogenetic tree
+
+```{r}
+
+ggtree(tree, layout = "slanted")
+
+```
+
+
+
+2: circular phylogenetic tree
+
+```{r}
+
+ggtree(tree, layout= "circular")
+
+```
+
+
+
+3
+
+```{r}
+
+ggtree(tree, color = "red", size = 3)
+
+```
+
+
+#Other tree geoms
+
+```{r}
+
+p <- ggtree(tree)
+p + geom_nodepoint()
+p + geom_tippoint()
+p + geom_tiplab()
+
+```
 
 
 
