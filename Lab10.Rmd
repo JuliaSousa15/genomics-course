@@ -1,0 +1,94 @@
+---
+title: "Lab 10: Population genomics based on high throughput screening (HTS)"
+author: "Julia Sousa"
+date: "11/12/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+library(tidyverse)
+```
+
+
+# Part I- Reading VCF data
+
+
+#VCF file structure
+
+```{r}
+library(vcfR)
+```
+
+```{r}
+
+data(vcfR_example)
+vcf
+
+```
+
+#The meta region
+
+```{r}
+strwrap(vcf@meta[1:7])
+```
+
+```{r}
+queryMETA(vcf)
+```
+
+```{r}
+queryMETA(vcf, element = 'DP')
+```
+
+```{r}
+queryMETA(vcf, element = 'FORMAT=<ID=DP')
+```
+
+#The fix region
+
+```{r}
+head(getFIX(vcf))
+```
+
+#The gt region
+
+```{r}
+vcf@gt[1:6, 1:4]
+```
+
+#vcfR
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
