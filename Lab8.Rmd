@@ -211,6 +211,46 @@ ggtree(tree) +
 
 ```
 
+```{r}
+
+ggtree(tree) + 
+  geom_tiplab() + 
+  geom_hilight(node=17, fill="gold") + 
+  geom_hilight(node=21, fill="purple")
+
+```
+
+
+#Connecting taxa
+
+```{r}
+
+ggtree(tree) +
+  geom_tiplab() +
+  geom_taxalink("E", "H", color = "blue") +
+  geom_taxalink("C", "G", color  = "orange2", curvature = -.9)
+
+```
+
+#Exercise 3
+
+
+```{r, fig.width = 5}
+
+ggtree(tree) +
+  geom_tiplab() +
+  geom_cladelabel(node = 19, label = "Superclade 17", color = "red2", offset = .8, align = TRUE) +
+   geom_hilight(node = 19, fill = "blue3") +
+  geom_hilight(node = 21, fill = "orange2") +
+  geom_taxalink("C", "E", curvature = .3, linetype = 2) +
+  geom_taxalink("G", "J", curvature = .4, linetype = 2) +
+  theme_tree2() +
+  ggtitle("Tree for Exercise 3")
+
+```
+
+
+
 
 
 
