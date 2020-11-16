@@ -10,21 +10,19 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 
-# Exercises
-
-# 1
+# Exercise 1
 
 This is the phylogenetic tree created from the set of rRNA sequences provided from Moodle, using NGPhylogeny.fr. It shows the evolutionary relatedness of the different species, based on their genetic sequences.
 
 ![](tree.PNG)
 
 
-# 2
+# Exercise 2
 
 Instructions: Align and do phylogenetic analysis off the sequences in CIPRES using MAFFT and FastTreeMP. Here is my step by step tutorial on using CIPRES. You will need to click on Parameter Set and Save even if you don’t change the parameters. Download the fastree_result.tre to your computer.
 
 
-# 3
+# Exercise 3
 Go through the tutorial on Visualizing and Annotating Phylogenetic Trees with R+ggtree adding the steps to your .Rmd file.
 
 #ggtree package
@@ -249,11 +247,31 @@ ggtree(tree) +
 
 ```
 
+# Exercise 4
 
+```{r}
 
+newtree <- read.tree("TOL_fastree_result.tre")
+newtree
 
+```
 
+```{r}
 
+ggtree(newtree) +
+  geom_text(aes(label = node), hjust = -.3) 
+
+```
+
+```{r, fig.height = 5}
+
+ggtree(newtree, layout = "circular") +
+  geom_tiplab() +
+  geom_hilight(node = 34, fill = "gold") +
+  geom_hilight(node = 29, fill = "blue3") +
+  geom_hilight(node = 22, fill = "purple", extend = -.8)
+
+```
 
 
 
