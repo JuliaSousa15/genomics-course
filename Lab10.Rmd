@@ -63,9 +63,67 @@ vcf@gt[1:6, 1:4]
 
 #vcfR
 
+```{r}
+
+vcf <- read.vcfR("data/pinfsc50_filtered.vcf.gz")
+
+```
+
+```{r}
+
+head(vcf)
+
+```
+
+```{r}
+
+write.vcf(vcf, "myVCFdata_filtered.vcf.gz")
+
+```
+
+# Exercises, Part I
+
+#1
+
+```{r}
+
+?read.vcfR
+
+```
 
 
+#2
 
+```{r}
+
+queryMETA(vcf, element = 'AD')
+
+```
+
+#3
+
+```{r}
+
+tail(vcf@fix)
+
+```
+
+#4
+
+```{r}
+
+plot(vcf)
+
+```
+
+```{r}
+
+colnames(vcf@gt)
+
+```
+
+
+# Part II- Analysis of Genome Data
 
 
 
