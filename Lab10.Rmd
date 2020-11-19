@@ -64,7 +64,6 @@ vcf@gt[1:6, 1:4]
 #vcfR
 
 ```{r}
-
 vcf <- read.vcfR("data/pinfsc50_filtered.vcf.gz")
 
 ```
