@@ -327,8 +327,39 @@ p
 
 #1
 
+```{r, fig.height = 3}
+
+plot(getPOS(vcf), myDiff$Gprimest,  pch = 20, col = "#1E90FF44", xlab = "", ylab = "", ylim = c(0, 1), xaxt = "n")
+axis(side = 1, at = seq(0, 1e5, by = 1e4), labels = seq(0, 100, by = 10))
+title(xlab='Genomic position (Kbp)')
+title(ylab = expression(italic("G'"["ST"])))
+
+```
+
+#2
+
+```{r}
+
+table(pop)
+
+```
 
 
+#3
+
+```{r, fig.height = 5}
+
+chromoqc(chrom, dp.alpha = 66)
+
+```
+
+#4
+
+```{r}
+
+queryMETA(vcf)
+
+```
 
 
 
