@@ -126,18 +126,206 @@ colnames(vcf@gt)
 
 #Introduction
 
-#
+#Opening and examining the dataset
+
+```{r}
+
+library('vcfR')
+vcf <- read.vcfR("data/pinfsc50_filtered.vcf.gz")
+
+```
+
+#Converting VCF data to genlight object
+
+```{r}
+library(adegenet)
+```
 
 
+```{r}
+
+x <- vcfR2genlight(vcf)
+
+```
+
+```{r}
+x
+```
+
+```{r}
+
+gt <- extract.gt(vcf, element = "GT")
+gt[c(2,6,18), 1:3]
+
+```
+
+```{r}
+
+t(as.matrix(x))[c(1,5,17), 1:3]
+
+```
+
+```{r}
+
+pop(x) <- as.factor(c("us", "eu", "us", "af", "eu", "us", "mx", "eu", "eu", "sa", "mx", "sa", "us", "sa", "Pmir", "us", "eu", "eu"))
+popNames(x)
+
+```
+
+```{r}
+ploidy(x) <- 2
+```
+
+#Distance matrices
+
+```{r}
+
+x.dist <- dist(x)
+
+```
+
+```{r}
+library(poppr)
+```
 
 
+```{r}
+
+x.dist <- poppr::bitwise.dist(x)
+
+```
+
+#chromR objects
+#Creating chromR objects
+
+```{r}
+
+library(vcfR)
+
+vcf_file <- system.file("extdata", "pinf_sc50.vcf.gz", package = "pinfsc50")
+dna_file <- system.file("extdata", "pinf_sc50.fasta", package = "pinfsc50")
+gff_file <- system.file("extdata", "pinf_sc50.gff", package = "pinfsc50")
+
+cf <- read.vcfR(vcf_file, verbose = FALSE)
+dna <- ape::read.dna(dna_file, format = "fasta")
+gff <- read.table(gff_file, sep="\t", quote="")
+
+chrom <- create.chromR(name="Supercontig", vcf=vcf, seq=dna, ann=gff, verbose=TRUE)
 
 
+```
+
+```{r}
+chrom
+```
+
+```{r, fig.height = 10}
+
+plot(chrom)
+
+```
+
+```{r, fig.height = 5}
+
+chromoqc(chrom, dp.alpha = 66)
+
+```
+
+#Processing chromR objects
+
+```{r}
+
+chrom <- proc.chromR(chrom, verbose = TRUE)
+
+```
+
+```{r, fig.height = 10}
+
+plot(chrom)
+
+```
+
+```{r, fig.height = 5}
+
+chromoqc(chrom, dp.alpha = 66)
+
+```
+
+```{r, fig.height = 5}
+
+vcf <- read.vcfR("data/pinfsc50_filtered.vcf.gz", verbose = FALSE)
+chrom <- create.chromR(name="Supercontig", vcf=vcf, seq=dna, ann=gff, verbose=FALSE)
+chrom <- proc.chromR(chrom, verbose = FALSE)
+chromoqc(chrom, dp.alpha = 66)
+
+```
+
+#Tabular summaries
 
 
+```{r}
+
+head(chrom@var.info)
+
+```
+
+```{r}
+
+head(chrom@win.info)
+
+```
+
+#Genetic differentation
+
+```{r}
+
+library(vcfR)
+data(vcfR_example)
+pop <- as.factor(c("us", "eu", "us", "af", "eu", "us", "mx", "eu", "eu", "sa", "mx", "sa", "us", "sa", "Pmir", "us", "eu", "eu"))
+myDiff <- genetic_diff(vcf, pops = pop, method = 'nei')
+knitr::kable(head(myDiff[,1:15]))
+
+```
+
+```{r}
+
+knitr::kable(head(myDiff[,16:19]))
+
+```
+
+```{r}
+
+knitr::kable(round(colMeans(myDiff[,c(3:9,16,19)], na.rm = TRUE), digits = 3))
+
+```
+
+```{r}
+library(tidyr)
+```
 
 
+```{r}
 
+library(reshape2)
+library(ggplot2)
+
+dpf <- melt(myDiff[,c(3:8,19)], varnames=c('Index', 'Sample'), value.name = 'Depth', na.rm=TRUE)
+
+```
+
+```{r}
+
+p <- ggplot(dpf, aes(x = variable, y = Depth)) +geom_violin(fill = "2ca25f", adjust = 1.2)
+p <- p + xlab("")
+p <- p + ylab("")
+p <- p + theme_bw()
+p
+
+```
+
+# Exercises, Part II
+
+#1
 
 
 
