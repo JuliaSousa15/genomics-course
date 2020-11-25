@@ -419,160 +419,86 @@ summary {
 
 
 <pre class="r"><code>library(tidyverse)</code></pre>
-<pre><code>## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.0 ──</code></pre>
-<pre><code>## ✓ ggplot2 3.3.2     ✓ purrr   0.3.4
-## ✓ tibble  3.0.4     ✓ dplyr   1.0.2
-## ✓ tidyr   1.1.2     ✓ stringr 1.4.0
-## ✓ readr   1.4.0     ✓ forcats 0.5.0</code></pre>
-<pre><code>## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+<pre><code>## -- Attaching packages --------------------------------------- tidyverse 1.3.0 --</code></pre>
+<pre><code>## v ggplot2 3.3.2     v purrr   0.3.4
+## v tibble  3.0.4     v dplyr   1.0.2
+## v tidyr   1.1.2     v stringr 1.4.0
+## v readr   1.4.0     v forcats 0.5.0</code></pre>
+<pre><code>## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()</code></pre>
 <pre class="r"><code>if (!requireNamespace(&quot;BiocManager&quot;, quietly = TRUE))
     install.packages(&quot;BiocManager&quot;)
 BiocManager::install(version = &quot;3.11&quot;)</code></pre>
-<pre><code>## Bioconductor version 3.11 (BiocManager 1.30.10), R 4.0.2 (2020-06-22)</code></pre>
+<pre><code>## Bioconductor version 3.11 (BiocManager 1.30.10), R 4.0.3 (2020-10-10)</code></pre>
 <pre><code>## Installation path not writeable, unable to update packages: codetools,
-##   KernSmooth, MASS, mgcv, nlme, survival</code></pre>
-<pre><code>## Old packages: &#39;colorspace&#39;, &#39;magick&#39;, &#39;rstudioapi&#39;, &#39;waldo&#39;</code></pre>
+##   KernSmooth, nlme</code></pre>
 <pre class="r"><code>if (!requireNamespace(&quot;BiocManager&quot;, quietly = TRUE))
     install.packages(&quot;BiocManager&quot;)
 
 BiocManager::install(&quot;rnaseqGene&quot;)</code></pre>
-<pre><code>## Bioconductor version 3.11 (BiocManager 1.30.10), R 4.0.2 (2020-06-22)</code></pre>
+<pre><code>## Bioconductor version 3.11 (BiocManager 1.30.10), R 4.0.3 (2020-10-10)</code></pre>
 <pre><code>## Installing package(s) &#39;rnaseqGene&#39;</code></pre>
-<pre><code>## also installing the dependencies &#39;RBGL&#39;, &#39;VariantAnnotation&#39;, &#39;OrganismDbi&#39;, &#39;ShortRead&#39;, &#39;GenomicFeatures&#39;, &#39;ensembldb&#39;, &#39;Category&#39;, &#39;GOstats&#39;, &#39;ggbio&#39;, &#39;rtracklayer&#39;, &#39;BSgenome&#39;, &#39;biovizBase&#39;, &#39;GenomicAlignments&#39;, &#39;EDASeq&#39;, &#39;tximeta&#39;, &#39;DESeq2&#39;, &#39;apeglm&#39;, &#39;ReportingTools&#39;, &#39;Gviz&#39;, &#39;RUVSeq&#39;</code></pre>
-<pre><code>## Warning in install.packages(...): installation of package &#39;RBGL&#39; had non-zero
-## exit status</code></pre>
-<pre><code>## Warning in install.packages(...): installation of package &#39;GenomicAlignments&#39;
-## had non-zero exit status</code></pre>
-<pre><code>## Warning in install.packages(...): installation of package &#39;DESeq2&#39; had non-zero
-## exit status</code></pre>
-<pre><code>## Warning in install.packages(...): installation of package &#39;apeglm&#39; had non-zero
-## exit status</code></pre>
-<pre><code>## Warning in install.packages(...): installation of package &#39;ShortRead&#39; had non-
-## zero exit status</code></pre>
-<pre><code>## Warning in install.packages(...): installation of package &#39;Category&#39; had non-
-## zero exit status</code></pre>
-<pre><code>## Warning in install.packages(...): installation of package &#39;rtracklayer&#39; had non-
-## zero exit status</code></pre>
-<pre><code>## Warning in install.packages(...): installation of package &#39;GenomicFeatures&#39; had
-## non-zero exit status</code></pre>
-<pre><code>## Warning in install.packages(...): installation of package &#39;GOstats&#39; had non-zero
-## exit status</code></pre>
-<pre><code>## Warning in install.packages(...): installation of package &#39;BSgenome&#39; had non-
-## zero exit status</code></pre>
-<pre><code>## Warning in install.packages(...): installation of package &#39;VariantAnnotation&#39;
-## had non-zero exit status</code></pre>
-<pre><code>## Warning in install.packages(...): installation of package &#39;OrganismDbi&#39; had non-
-## zero exit status</code></pre>
-<pre><code>## Warning in install.packages(...): installation of package &#39;ensembldb&#39; had non-
-## zero exit status</code></pre>
-<pre><code>## Warning in install.packages(...): installation of package &#39;EDASeq&#39; had non-zero
-## exit status</code></pre>
-<pre><code>## Warning in install.packages(...): installation of package &#39;biovizBase&#39; had non-
-## zero exit status</code></pre>
-<pre><code>## Warning in install.packages(...): installation of package &#39;tximeta&#39; had non-zero
-## exit status</code></pre>
-<pre><code>## Warning in install.packages(...): installation of package &#39;RUVSeq&#39; had non-zero
-## exit status</code></pre>
-<pre><code>## Warning in install.packages(...): installation of package &#39;ggbio&#39; had non-zero
-## exit status</code></pre>
-<pre><code>## Warning in install.packages(...): installation of package &#39;Gviz&#39; had non-zero
-## exit status</code></pre>
-<pre><code>## Warning in install.packages(...): installation of package &#39;ReportingTools&#39; had
-## non-zero exit status</code></pre>
-<pre><code>## Warning in install.packages(...): installation of package &#39;rnaseqGene&#39; had non-
-## zero exit status</code></pre>
+<pre><code>## installing the source package &#39;rnaseqGene&#39;</code></pre>
 <pre><code>## Installation path not writeable, unable to update packages: codetools,
-##   KernSmooth, MASS, mgcv, nlme, survival</code></pre>
-<pre><code>## Old packages: &#39;colorspace&#39;, &#39;magick&#39;, &#39;rstudioapi&#39;, &#39;waldo&#39;</code></pre>
+##   KernSmooth, nlme</code></pre>
 <pre class="r"><code>BiocManager::install(&quot;airway&quot;)</code></pre>
-<pre><code>## Bioconductor version 3.11 (BiocManager 1.30.10), R 4.0.2 (2020-06-22)</code></pre>
+<pre><code>## Bioconductor version 3.11 (BiocManager 1.30.10), R 4.0.3 (2020-10-10)</code></pre>
 <pre><code>## Installing package(s) &#39;airway&#39;</code></pre>
+<pre><code>## installing the source package &#39;airway&#39;</code></pre>
 <pre><code>## Installation path not writeable, unable to update packages: codetools,
-##   KernSmooth, MASS, mgcv, nlme, survival</code></pre>
-<pre><code>## Old packages: &#39;colorspace&#39;, &#39;magick&#39;, &#39;rstudioapi&#39;, &#39;waldo&#39;</code></pre>
+##   KernSmooth, nlme</code></pre>
 <pre class="r"><code>BiocManager::install(&quot;tximeta&quot;)</code></pre>
-<pre><code>## Bioconductor version 3.11 (BiocManager 1.30.10), R 4.0.2 (2020-06-22)</code></pre>
+<pre><code>## Bioconductor version 3.11 (BiocManager 1.30.10), R 4.0.3 (2020-10-10)</code></pre>
 <pre><code>## Installing package(s) &#39;tximeta&#39;</code></pre>
-<pre><code>## also installing the dependencies &#39;GenomicAlignments&#39;, &#39;rtracklayer&#39;, &#39;GenomicFeatures&#39;, &#39;ensembldb&#39;</code></pre>
-<pre><code>## Warning in install.packages(...): installation of package &#39;GenomicAlignments&#39;
-## had non-zero exit status</code></pre>
-<pre><code>## Warning in install.packages(...): installation of package &#39;rtracklayer&#39; had non-
-## zero exit status</code></pre>
-<pre><code>## Warning in install.packages(...): installation of package &#39;GenomicFeatures&#39; had
-## non-zero exit status</code></pre>
-<pre><code>## Warning in install.packages(...): installation of package &#39;ensembldb&#39; had non-
-## zero exit status</code></pre>
-<pre><code>## Warning in install.packages(...): installation of package &#39;tximeta&#39; had non-zero
-## exit status</code></pre>
+<pre><code>## package &#39;tximeta&#39; successfully unpacked and MD5 sums checked
+## 
+## The downloaded binary packages are in
+##  C:\Users\jsous\AppData\Local\Temp\RtmpUNhaOg\downloaded_packages</code></pre>
 <pre><code>## Installation path not writeable, unable to update packages: codetools,
-##   KernSmooth, MASS, mgcv, nlme, survival</code></pre>
-<pre><code>## Old packages: &#39;colorspace&#39;, &#39;magick&#39;, &#39;rstudioapi&#39;, &#39;waldo&#39;</code></pre>
+##   KernSmooth, nlme</code></pre>
 <pre class="r"><code>BiocManager::install(&quot;DESeq2&quot;)</code></pre>
-<pre><code>## Bioconductor version 3.11 (BiocManager 1.30.10), R 4.0.2 (2020-06-22)</code></pre>
+<pre><code>## Bioconductor version 3.11 (BiocManager 1.30.10), R 4.0.3 (2020-10-10)</code></pre>
 <pre><code>## Installing package(s) &#39;DESeq2&#39;</code></pre>
-<pre><code>## Warning in install.packages(...): installation of package &#39;DESeq2&#39; had non-zero
-## exit status</code></pre>
+<pre><code>## package &#39;DESeq2&#39; successfully unpacked and MD5 sums checked
+## 
+## The downloaded binary packages are in
+##  C:\Users\jsous\AppData\Local\Temp\RtmpUNhaOg\downloaded_packages</code></pre>
 <pre><code>## Installation path not writeable, unable to update packages: codetools,
-##   KernSmooth, MASS, mgcv, nlme, survival</code></pre>
-<pre><code>## Old packages: &#39;colorspace&#39;, &#39;magick&#39;, &#39;rstudioapi&#39;, &#39;waldo&#39;</code></pre>
+##   KernSmooth, nlme</code></pre>
 <pre class="r"><code>BiocManager::install(&quot;Gviz&quot;)</code></pre>
-<pre><code>## Bioconductor version 3.11 (BiocManager 1.30.10), R 4.0.2 (2020-06-22)</code></pre>
+<pre><code>## Bioconductor version 3.11 (BiocManager 1.30.10), R 4.0.3 (2020-10-10)</code></pre>
 <pre><code>## Installing package(s) &#39;Gviz&#39;</code></pre>
-<pre><code>## also installing the dependencies &#39;VariantAnnotation&#39;, &#39;rtracklayer&#39;, &#39;GenomicFeatures&#39;, &#39;ensembldb&#39;, &#39;BSgenome&#39;, &#39;biovizBase&#39;, &#39;GenomicAlignments&#39;</code></pre>
-<pre><code>## Warning in install.packages(...): installation of package &#39;GenomicAlignments&#39;
-## had non-zero exit status</code></pre>
-<pre><code>## Warning in install.packages(...): installation of package &#39;rtracklayer&#39; had non-
-## zero exit status</code></pre>
-<pre><code>## Warning in install.packages(...): installation of package &#39;GenomicFeatures&#39; had
-## non-zero exit status</code></pre>
-<pre><code>## Warning in install.packages(...): installation of package &#39;BSgenome&#39; had non-
-## zero exit status</code></pre>
-<pre><code>## Warning in install.packages(...): installation of package &#39;VariantAnnotation&#39;
-## had non-zero exit status</code></pre>
-<pre><code>## Warning in install.packages(...): installation of package &#39;ensembldb&#39; had non-
-## zero exit status</code></pre>
-<pre><code>## Warning in install.packages(...): installation of package &#39;biovizBase&#39; had non-
-## zero exit status</code></pre>
-<pre><code>## Warning in install.packages(...): installation of package &#39;Gviz&#39; had non-zero
-## exit status</code></pre>
+<pre><code>## package &#39;Gviz&#39; successfully unpacked and MD5 sums checked
+## 
+## The downloaded binary packages are in
+##  C:\Users\jsous\AppData\Local\Temp\RtmpUNhaOg\downloaded_packages</code></pre>
 <pre><code>## Installation path not writeable, unable to update packages: codetools,
-##   KernSmooth, MASS, mgcv, nlme, survival</code></pre>
-<pre><code>## Old packages: &#39;colorspace&#39;, &#39;magick&#39;, &#39;rstudioapi&#39;, &#39;waldo&#39;</code></pre>
+##   KernSmooth, nlme</code></pre>
 <pre class="r"><code>BiocManager::install(&quot;sva&quot;)</code></pre>
-<pre><code>## Bioconductor version 3.11 (BiocManager 1.30.10), R 4.0.2 (2020-06-22)</code></pre>
+<pre><code>## Bioconductor version 3.11 (BiocManager 1.30.10), R 4.0.3 (2020-10-10)</code></pre>
 <pre><code>## Installing package(s) &#39;sva&#39;</code></pre>
-<pre><code>## Warning in install.packages(...): installation of package &#39;sva&#39; had non-zero
-## exit status</code></pre>
+<pre><code>## package &#39;sva&#39; successfully unpacked and MD5 sums checked
+## 
+## The downloaded binary packages are in
+##  C:\Users\jsous\AppData\Local\Temp\RtmpUNhaOg\downloaded_packages</code></pre>
 <pre><code>## Installation path not writeable, unable to update packages: codetools,
-##   KernSmooth, MASS, mgcv, nlme, survival</code></pre>
-<pre><code>## Old packages: &#39;colorspace&#39;, &#39;magick&#39;, &#39;rstudioapi&#39;, &#39;waldo&#39;</code></pre>
+##   KernSmooth, nlme</code></pre>
 <pre class="r"><code>BiocManager::install(&quot;RUVSeq&quot;)</code></pre>
-<pre><code>## Bioconductor version 3.11 (BiocManager 1.30.10), R 4.0.2 (2020-06-22)</code></pre>
+<pre><code>## Bioconductor version 3.11 (BiocManager 1.30.10), R 4.0.3 (2020-10-10)</code></pre>
 <pre><code>## Installing package(s) &#39;RUVSeq&#39;</code></pre>
-<pre><code>## also installing the dependencies &#39;GenomicAlignments&#39;, &#39;rtracklayer&#39;, &#39;ShortRead&#39;, &#39;GenomicFeatures&#39;, &#39;EDASeq&#39;</code></pre>
-<pre><code>## Warning in install.packages(...): installation of package &#39;GenomicAlignments&#39;
-## had non-zero exit status</code></pre>
-<pre><code>## Warning in install.packages(...): installation of package &#39;rtracklayer&#39; had non-
-## zero exit status</code></pre>
-<pre><code>## Warning in install.packages(...): installation of package &#39;ShortRead&#39; had non-
-## zero exit status</code></pre>
-<pre><code>## Warning in install.packages(...): installation of package &#39;GenomicFeatures&#39; had
-## non-zero exit status</code></pre>
-<pre><code>## Warning in install.packages(...): installation of package &#39;EDASeq&#39; had non-zero
-## exit status</code></pre>
-<pre><code>## Warning in install.packages(...): installation of package &#39;RUVSeq&#39; had non-zero
-## exit status</code></pre>
+<pre><code>## package &#39;RUVSeq&#39; successfully unpacked and MD5 sums checked
+## 
+## The downloaded binary packages are in
+##  C:\Users\jsous\AppData\Local\Temp\RtmpUNhaOg\downloaded_packages</code></pre>
 <pre><code>## Installation path not writeable, unable to update packages: codetools,
-##   KernSmooth, MASS, mgcv, nlme, survival</code></pre>
-<pre><code>## Old packages: &#39;colorspace&#39;, &#39;magick&#39;, &#39;rstudioapi&#39;, &#39;waldo&#39;</code></pre>
+##   KernSmooth, nlme</code></pre>
 <pre class="r"><code>BiocManager::install(&quot;fission&quot;)</code></pre>
-<pre><code>## Bioconductor version 3.11 (BiocManager 1.30.10), R 4.0.2 (2020-06-22)</code></pre>
+<pre><code>## Bioconductor version 3.11 (BiocManager 1.30.10), R 4.0.3 (2020-10-10)</code></pre>
 <pre><code>## Installing package(s) &#39;fission&#39;</code></pre>
+<pre><code>## installing the source package &#39;fission&#39;</code></pre>
 <pre><code>## Installation path not writeable, unable to update packages: codetools,
-##   KernSmooth, MASS, mgcv, nlme, survival</code></pre>
-<pre><code>## Old packages: &#39;colorspace&#39;, &#39;magick&#39;, &#39;rstudioapi&#39;, &#39;waldo&#39;</code></pre>
+##   KernSmooth, nlme</code></pre>
 <pre class="r"><code>library(tidyverse)
 library(ggplot2)
 library(dplyr)</code></pre>
@@ -626,6 +552,9 @@ library(dplyr)</code></pre>
 <pre><code>## The following object is masked from &#39;package:purrr&#39;:
 ## 
 ##     reduce</code></pre>
+<pre><code>## The following object is masked from &#39;package:grDevices&#39;:
+## 
+##     windows</code></pre>
 <pre><code>## Loading required package: GenomeInfoDb</code></pre>
 <pre><code>## Loading required package: Biobase</code></pre>
 <pre><code>## Welcome to Bioconductor
@@ -691,6 +620,47 @@ coldata$names &lt;- coldata$Run
 coldata$files &lt;- file.path(dir, &quot;quants&quot;, coldata$names, &quot;quant.sf.gz&quot;)
 file.exists(coldata$files)</code></pre>
 <pre><code>## [1] TRUE TRUE</code></pre>
+<pre class="r"><code>library(&quot;tximeta&quot;)
+
+se &lt;- tximeta(coldata)</code></pre>
+<pre><code>## importing quantifications</code></pre>
+<pre><code>## reading in files with read_tsv</code></pre>
+<pre><code>## 1 2 
+## found matching transcriptome:
+## [ GENCODE - Homo sapiens - release 29 ]
+## loading existing TxDb created: 2020-11-25 18:13:56
+## Loading required package: GenomicFeatures
+## Loading required package: AnnotationDbi
+## 
+## Attaching package: &#39;AnnotationDbi&#39;
+## 
+## The following object is masked from &#39;package:dplyr&#39;:
+## 
+##     select
+## 
+## loading existing transcript ranges created: 2020-11-25 18:14:00
+## fetching genome info for GENCODE</code></pre>
+<p>Note: when trying to run this line of code, it asked which directory BiocFileCache directory should access and save tTxDb objects. I chose to send it to what I believe is my local computer. After choosing this option, it did not produce the same output as the tutorial.</p>
+<pre class="r"><code>dim(se)</code></pre>
+<pre><code>## [1] 205870      2</code></pre>
+<pre class="r"><code>head(rownames(se))</code></pre>
+<pre><code>## [1] &quot;ENST00000456328.2&quot; &quot;ENST00000450305.2&quot; &quot;ENST00000488147.1&quot;
+## [4] &quot;ENST00000619216.1&quot; &quot;ENST00000473358.1&quot; &quot;ENST00000469289.1&quot;</code></pre>
+<pre class="r"><code>gse &lt;- summarizeToGene(se)</code></pre>
+<pre><code>## loading existing TxDb created: 2020-11-25 18:13:56</code></pre>
+<pre><code>## obtaining transcript-to-gene mapping from database</code></pre>
+<pre><code>## loading existing gene ranges created: 2020-11-25 18:24:34</code></pre>
+<pre><code>## summarizing abundance</code></pre>
+<pre><code>## summarizing counts</code></pre>
+<pre><code>## summarizing length</code></pre>
+<pre class="r"><code>dim(gse)</code></pre>
+<pre><code>## [1] 58294     2</code></pre>
+<pre class="r"><code>head(rownames(gse))</code></pre>
+<pre><code>## [1] &quot;ENSG00000000003.14&quot; &quot;ENSG00000000005.5&quot;  &quot;ENSG00000000419.12&quot;
+## [4] &quot;ENSG00000000457.13&quot; &quot;ENSG00000000460.16&quot; &quot;ENSG00000000938.12&quot;</code></pre>
+</div>
+<div id="deseq2-import-functions" class="section level1">
+<h1>2.4 DESeq2 import functions</h1>
 </div>
 
 

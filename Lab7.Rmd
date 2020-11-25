@@ -110,6 +110,48 @@ file.exists(coldata$files)
 
 ```
 
+```{r}
+
+library("tximeta")
+
+se <- tximeta(coldata)
+
+```
+
+Note: when trying to run this line of code, it asked which directory BiocFileCache directory should access and save tTxDb objects. I chose to send it to what I believe is my local computer. After choosing this option, it did not produce the same output as the tutorial.
+
+```{r}
+
+dim(se)
+
+```
+
+```{r}
+
+head(rownames(se))
+
+```
+
+```{r}
+
+gse <- summarizeToGene(se)
+
+```
+
+```{r}
+
+dim(gse)
+
+```
+
+```{r}
+
+head(rownames(gse))
+
+```
+
+
+# 2.4 DESeq2 import functions
 
 
 
