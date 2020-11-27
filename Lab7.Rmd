@@ -475,7 +475,182 @@ pheatmap(samplePoisDistMatrix,
 
 # 4.4 PCA plot
 
+```{r}
 
+plotPCA(vsd, intgroup = c("dex", "cell"))
+
+```
+
+```{r}
+
+pcaData <- plotPCA(vsd, intgroup = c("dex", "cell"), returnData = TRUE)
+pcaData
+
+```
+
+```{r}
+
+percentVar <- round(100 * attr(pcaData, "percentVar"))
+
+```
+
+```{r}
+
+ggplot(pcaData, aes(x = PC1, y = PC2, color = dex, shape = cell)) +
+  geom_point(size =3) +
+  xlab(paste0("PC1: ", percentVar[1], "% variance")) +
+  ylab(paste0("PC2: ", percentVar[2], "% variance")) +
+  coord_fixed() +
+  ggtitle("PCA with VST data")
+
+```
+
+
+# 4.5 PCA plot using Generalized PCA
+
+
+Note: 
+- can use generalized principal component analysis (GLM-PCA) to perform dimension reduction on data that's not normally distributed
+
+
+```{r}
+
+library("glmpca")
+
+gpca <- glmpca(counts(dds), L = 2)
+gpca.dat <- gpca$factors
+gpca.dat$dex <- dds$dex
+gpca.dat$cell <- dds$cell
+
+ggplot(gpca.dat, aes(x = dim1, y = dim2, color = dex, shape = cell)) + 
+  geom_point(size = 3) + coord_fixed() + ggtitle("glmpca - Generalized PCA")
+
+```
+
+
+# 4.6 MDS plot
+
+Note: 
+- multidimensional scaling (MDS) is useful when don't have a matrix of data, but only a matrix of distances
+
+```{r}
+
+mds <- as.data.frame(colData(vsd))  %>%
+         cbind(cmdscale(sampleDistMatrix))
+ggplot(mds, aes(x = `1`, y = `2`, color = dex, shape = cell)) +
+  geom_point(size = 3) + coord_fixed() + ggtitle("MDS with VST data")
+
+```
+
+```{r}
+
+mdsPois <- as.data.frame(colData(dds)) %>%
+   cbind(cmdscale(samplePoisDistMatrix))
+ggplot(mdsPois, aes(x = `1`, y = `2`, color = dex, shape = cell)) +
+  geom_point(size = 3) + coord_fixed() + ggtitle("MDS with PoissonDistances")
+
+```
+
+# 5 Differentiala expression analysis
+
+# 5.1 Running differential expression pipeline
+
+```{r}
+
+dds <- DESeq(dds)
+
+```
+
+
+# 5.2 Building the results table
+
+```{r}
+
+res <- results(dds)
+res
+
+```
+
+```{r}
+
+res <- results(dds, contrast = c("dex", "trt", "untrt"))
+
+```
+
+
+```{r}
+
+mcols(res, use.names = TRUE)
+
+```
+
+```{r}
+
+summary(res)
+
+```
+
+```{r}
+
+res.05 <- results(dds, alpha = 0.05)
+table(res.05$padj < 0.05)
+
+```
+
+```{r}
+
+resLFC1 <- results(dds, lfcThreshold = 1)
+table(resLFC1$padj < 0.1)
+
+```
+
+
+# 5.3 Other comparisions
+
+```{r}
+
+results(dds, contrast = c("cell", "N061011", "N61311"))
+
+```
+
+
+# 5.4 Multiple teasing
+
+```{r}
+
+sum(res$pvalue < 0.05, na.rm = TRUE)
+
+```
+
+```{r}
+
+sum(!is.na(res$pvalue))
+
+```
+
+```{r}
+
+sum(res$padj < 0.1, na.rm = TRUE)
+
+```
+
+```{r}
+
+resSig <- subset(res, padj < 0.1)
+head(resSig[ order(resSig$log2FoldChange), ])
+
+```
+
+```{r}
+
+head(resSig[ order(resSig$log2FoldChange, decreasing = TRUE), ])
+
+```
+
+
+# Plotting results
+
+# 6.1 Counts plot
 
 
 
