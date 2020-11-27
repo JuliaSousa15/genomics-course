@@ -153,6 +153,328 @@ head(rownames(gse))
 
 # 2.4 DESeq2 import functions
 
+Notes:
+- use different packages to produce desired outputs, along with the function that you need to use
+- tximport function, output: list of matrices
+- tximeta function, output: SummarizedExperiment
+- htseq-count function, output: files
+- featureCounts function, output: matrix
+- summarizeOverlaps function, output:  SummarizedExperiment
+
+# 2.5 SummarizedExperiment
+
+Notes:
+- assay contains matrix of counts
+- rowRanges contains info about genomic ranges
+- colData contains info about the samples, lines up with the first column of the assay
+
+- tximeta creates an object, gse with three matrices
+
+```{r}
+
+data(gse)
+gse
+
+```
+
+```{r}
+
+assayNames(gse)
+
+```
+
+```{r}
+
+head(assay(gse), 3)
+
+```
+
+```{r}
+
+colSums(assay(gse))
+
+```
+
+```{r}
+
+rowRanges(gse)
+
+```
+
+```{r}
+
+seqinfo(rowRanges(gse))
+
+```
+
+```{r}
+
+colData(gse)
+
+```
+
+# 2.6 Branching point
+
+Notes:
+- only need SummarizedExperiment object to start analysis
+
+
+#   The DESeqDataSet object, sample information and the design formula
+
+Notes:
+- SummarizedExperiment can be used to move data between packages, automatically subset or reorder the rows or columns associated with rowRanges and colData
+
+```{r}
+
+gse$donor
+
+```
+
+```{r}
+
+gse$condition
+
+```
+
+```{r}
+
+gse$cell <- gse$donor
+gse$dex <- gse$condition
+
+```
+
+```{r}
+
+levels(gse$dex)
+
+```
+(preserving order:)
+
+```{r}
+
+levels(gse$dex) <- c("untrt", "trt")
+
+```
+
+```{r}
+
+library("magrittr")
+gse$dex %<>% relevel("untrt")
+gse$dex
+
+```
+
+Note:
+- %<>% is the pip for magrittr package
+
+```{r}
+
+gse$gex <- relevel(gse$dex, "untrt")
+
+```
+
+
+# 3.1 Starting from SummarizedExperiment
+
+```{r}
+
+round( colSums(assay(gse)) / 1e6, 1 )
+
+```
+
+```{r}
+
+library("DESeq2")
+dds <- DESeqDataSet(gse, design = ~ cell + dex)
+
+```
+
+
+# 3.2 Starting from count matrices
+
+```{r}
+
+countdata <- round(assays(gse)[["counts"]])
+head(countdata, 3)
+
+```
+
+Note:
+- each row represents a gene
+- each column represents a sequences RNA library
+- vaues give the estimated counts of fragments that were probabilistically assigned to the respective gene in each library
+- !! important to check that the columns of the count matrix correspond to the rows of the sample info table manually !!
+
+```{r}
+
+coldata <- colData(gse)
+
+```
+
+Note:
+- countdata: table with fragment counts
+- coldata: table with info about the samples
+
+```{r}
+
+ddsMat <- DESeqDataSetFromMatrix(countData = countdata,
+                                 colData = coldata,
+                                 design = ~ cell + dex)
+
+```
+
+# 4 Exploratory analysis and visualization
+
+
+# 4.1 Pre-filtering the dataset
+
+```{r}
+
+nrow(dds)
+
+```
+
+```{r}
+
+keep <- rowSums(counts(dds)) > 1
+dds <- dds[keep,]
+nrow(dds)
+
+```
+
+Note:
+- some datasets need more filtering
+  - can specify that at least 3 samples have a count of 10 or higher
+
+```{r}
+
+keep <- rowSums(counts(dds) >= 10) >= 3
+
+```
+
+
+# 4.2 The variance stabilizing transformation and the rlog
+
+```{r}
+
+lambda <- 10^seq(from = -1, to = 2, length = 1000)
+cts <- matrix(rpois(1000*100, lambda), ncol = 100)
+library("vsn")
+meanSdPlot(cts, ranks = FALSE)
+
+```
+
+```{r}
+
+log.cts.one <- log2(cts + 1)
+meanSdPlot(log.cts.one, ranks = FALSE)
+
+```
+
+```{r}
+
+vsd <- vst(dds, blind = FALSE)
+head(assay(vsd), 3)
+
+```
+
+```{r}
+
+colData(vsd)
+
+```
+
+```{r}
+
+rld <- rlog(dds, blind = FALSE)
+head(assay(rld), 3)
+
+```
+
+Note: 
+- "blind = FALSE" means that differences between cell lines and treatment won't contribute to the expected variance-mean trend of the experiment
+
+```{r}
+
+library("dplyr")
+library("ggplot2")
+
+dds <- estimateSizeFactors(dds)
+
+df <- bind_rows(
+  as_data_frame(log2(counts(dds, normalized = TRUE)[, 1:2] + 1)) %>% 
+    mutate(transformation = "log2(x + 1"),
+  as_data_frame(assay(vsd)[, 1:2]) %>% mutate(transformation = "vst"),
+  as_data_frame(assay(rld)[, 1:2]) %>% mutate(transformation = "rlog"))
+
+colnames(df)[1:2] <- c("x", "y")
+
+lvls <- c("log2(x + 1)", "vst", "rlog")
+df$transformation <- factor(df$transformation, levels = lvls)
+
+ggplot(df, aes(x = x, y = y)) + geom_hex(bins = 80) +
+  coord_fixed() + facet_grid(. ~ transformation)
+
+```
+
+
+# 4.3 Sample distances
+
+```{r}
+
+sampleDists <- dist(t(assay(vsd)))
+sampleDists
+
+```
+
+```{r}
+
+library("pheatmap")
+library("RColorBrewer")
+
+```
+
+Note:
+- must manually provide sampleDists to culstering_distance of pheatmap other pheatmap will assume matrix is the data values themselves and caluculate distances between rows/columns of distance matrix (not what is wanted)
+
+```{r}
+
+sampleDistMatrix <- as.matrix(sampleDists)
+rownames(sampleDistMatrix) <- paste(vsd$dex, vsd$cell, sep = " -  ")
+colnames(sampleDistMatrix) <- NULL
+colors <- colorRampPalette(rev(brewer.pal(9, "Blues")) ) (255)
+pheatmap(sampleDistMatrix,
+         clustering_distance_rows = sampleDists,
+         clustering_distance_cols = sampleDists,
+         col = colors)
+
+```
+
+- can also calculate sample distances using Poisson Distance (PoiClaClu package)
+
+```{r}
+
+library("PoiClaClu")
+poisd <- PoissonDistance(t(counts(dds)))
+
+```
+
+```{r}
+
+samplePoisDistMatrix <- as.matrix( poisd$dd )
+rownames(samplePoisDistMatrix) <- paste( dds$dex, dds$cell, sep=" - " )
+colnames(samplePoisDistMatrix) <- NULL
+pheatmap(samplePoisDistMatrix,
+         clustering_distance_rows = poisd$dd,
+         clustering_distance_cols = poisd$dd,
+         col = colors)
+
+```
+
+
+
+# 4.4 PCA plot
+
 
 
 
