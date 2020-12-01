@@ -13,11 +13,12 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r}
 
 library(tidyverse)
+library(tidyr)
 
 ```
 
 
-```{r}
+```{r, eval = FALSE}
 
 if (!requireNamespace("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
@@ -26,7 +27,7 @@ BiocManager::install(version = "3.11")
 ```
 
 
-```{r}
+```{r, eval = FALSE}
 
 if (!requireNamespace("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
@@ -36,26 +37,23 @@ BiocManager::install("rnaseqGene")
 ```
 
 
-```{r}
+```{r, eval = FALSE}
 
 BiocManager::install("airway")
-
-```
-
-```{r}
-
 BiocManager::install("tximeta")
-
-```
-
-```{r}
-BiocManager::install("DESeq2")
 BiocManager::install("Gviz")
 BiocManager::install("sva")
 BiocManager::install("RUVSeq")
 BiocManager::install("fission")
 
 ```
+
+```{r}
+
+library(DESeq2)
+
+```
+
 
 ```{r}
 
@@ -761,7 +759,7 @@ barplot(fractionSig, xlab = "mean normalized count",
 
 # 6.5 Independent Hypothesis Weighting
 
-```{r}
+```{r, eval=FALSE}
 
 BiocManager::install("IHW")
 
@@ -817,6 +815,12 @@ head(resOrdered)
 # 7.1 Exporting results
 
 
+```{r, eval = FALSE}
+
+BiocManager::install("ReportingTools")
+
+```
+
 ```{r}
 
 resOrderedDF <- as.data.frame(resOrdered)[1:100, ]
@@ -827,11 +831,19 @@ write.csv(resOrderedDF, file = "results.csv")
 Note:
 - ReoprtingTools automatically generate dynamic HTML documents
 
-The file wouldn't knit, but was able to produce an output. Here are screenshots:
+```{r, eval=FALSE}
 
-![This is what the code looked like](html_ss.png)
+library("ReportingTools")
 
-![This is the output that was produced in my web browser](code_ss.png)
+
+htmlRep <- HTMLReport(shortName="report", title="My report",
+                 reportDirectory="./report")
+publish(resOrderedDF, htmlRep)
+url <- finish(htmlRep)
+browseURL(url)
+
+```
+
 
 
 
@@ -852,7 +864,7 @@ resGR$symbol <- mapIds(org.Hs.eg.db, ens.str, "SYMBOL", "ENSEMBL")
 ```
 
 
-```{r}
+```{r, eval = FALSE}
 BiocManager::install("Gviz")
 ```
 
