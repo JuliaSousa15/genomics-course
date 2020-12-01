@@ -18,7 +18,7 @@ library(tidyr)
 ```
 
 
-```{r, eval = FALSE}
+```{r, eval=FALSE}
 
 if (!requireNamespace("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
@@ -27,7 +27,7 @@ BiocManager::install(version = "3.11")
 ```
 
 
-```{r, eval = FALSE}
+```{r, eval=FALSE}
 
 if (!requireNamespace("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
@@ -37,7 +37,7 @@ BiocManager::install("rnaseqGene")
 ```
 
 
-```{r, eval = FALSE}
+```{r, eval=FALSE}
 
 BiocManager::install("airway")
 BiocManager::install("tximeta")
@@ -864,7 +864,7 @@ resGR$symbol <- mapIds(org.Hs.eg.db, ens.str, "SYMBOL", "ENSEMBL")
 ```
 
 
-```{r, eval = FALSE}
+```{r, eval=FALSE}
 BiocManager::install("Gviz")
 ```
 
