@@ -2,14 +2,17 @@
 title: "Lab 12: Network Analysis using Cytoscape and RCy3"
 author: "Julia Sousa"
 date: "11/28/2020"
-output: html_document
+output:
+  prettydoc::html_pretty:
+    theme: architect
+    highlight: github
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-
+# Cytoscape
 
 
 
