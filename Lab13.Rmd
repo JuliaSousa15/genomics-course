@@ -1,0 +1,37 @@
+---
+title: 'Lab 13: Sprucing up your Rmarkdown and GitHub Page'
+author: "Julia Sousa"
+date: "12/2/2020"
+output: 
+  prettydoc::html_pretty:
+  theme: cayman
+  highlight: github
+
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+Hi Professor! I changed the theme for Lab 12. Learning RStudio was definitely a challenge for me since I had no prior experience in coding, but I found it to be very interesting! I'm going to try to continue it on my own once the semester ends. 
+
+
+I'm not sure what else to write, but I hope you're having a great day, and have a relaxing winter break! :)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
