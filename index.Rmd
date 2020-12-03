@@ -44,6 +44,8 @@ knitr::opts_chunk$set(echo = TRUE)
 
 * Lab 11: [Microbiome Analysis using data2 and phyloseq](Lab11.html)
 
+* Lab 11x: [Microbiome Aaalysis using phyloseq](Lab11x.html)
+
 * Lab 12: [Network Analysis using Cytoscape and RCy3](Lab12.html)
 
 * Lab 13: [Sprucing up your Rmarkdown and GitHub Page](Lab13.html)
