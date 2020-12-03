@@ -438,38 +438,65 @@ heatmap(otu_table(gpac))
 ```
 
 
+# Tutorial 4: Networks
+
+#Load Package and Example Data
+
+```{r}
+
+library(phyloseq); packageVersion("phyloseq")
+packageVersion("ggplot2")
+data(enterotype)
+set.seed(711L)
+enterotype = subset_samples(enterotype, !is.na(Enterotype))
+
+```
 
 
+#The plot_net function
+
+```{r}
+
+plot_net(enterotype, maxdist = 0.4, point_label = "Sample_ID")
+
+```
+
+```{r}
+
+plot_net(enterotype, maxdist = 0.3, color = "SeqTech", shape="Enterotype")
+
+```
 
 
+#The plot_network funciton
 
+```{r}
 
+ig <- make_network(enterotype, max.dist=0.3)
 
+plot_network(ig, enterotype)
 
+```
 
+```{r}
 
+plot_network(ig, enterotype, color="SeqTech", shape="Enterotype", line_weight=0.4, label=NULL)
 
+```
 
+```{r}
 
+ig <- make_network(enterotype, max.dist=0.2)
+plot_network(ig, enterotype, color="SeqTech", shape="Enterotype", line_weight=0.4, label=NULL)
 
+```
 
+```{r}
 
+ig <- make_network(enterotype, fist.fun="bray:, max.dist=0.3")
+plot_network(ig, enterotype, color="SeqTech", shape="Enterotype", line_weight=0.4, label=NULL)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+```
 
 
 
